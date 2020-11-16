@@ -1,0 +1,97 @@
+.login-section{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    position: relative;
+    .login-left{
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $primary-color;
+            border-radius: 0 0 90% 0/0 0 100% 0;
+            transform: scaleY(1.4);
+        }
+        .login-content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column ;
+            position: relative;
+            z-index: 1;
+            margin: 0 auto;
+            height: 100%;
+            padding: 3rem 2rem 2rem 2rem;
+            h2{
+                color:  #fff;
+            }
+            p{
+                color: #fff;
+                width: 60%;
+                text-align: center;
+            }
+            img{
+                width: 100%;
+               
+            }
+            .button-signup{
+                border: 2px solid #fff;
+                background-color: transparent;
+                border-radius: 25px !important;
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+    .form-login{
+        >p{
+            font-weight: bold;
+        }
+        >input{
+            width: 400px;
+            height: 50px;
+            padding: 20px;
+            margin: 10px 0px;
+            border-radius: 25px;
+            border: unset;
+            background-color:rgba($color: gray, $alpha: 0.2);
+        }
+
+        >button{
+            border: unset;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (max-width:990px){
+    .login-section{
+        .login-left{
+            height: 30%;
+            min-height: unset;
+            &:before{
+                background: white !important;
+            }
+            .login-content{
+                >h2{
+                    display: none;
+                }
+                >p{
+                    display: none;
+                }
+                >img{
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
