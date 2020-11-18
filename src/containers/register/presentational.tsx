@@ -3,8 +3,8 @@ import logo from '../../assets/images/car.svg';
 import {Formik} from 'formik';
 import { Form } from 'antd';
 import * as yup from 'yup';
-import {IFormType } from '../../@types/login.type';
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import {IFormType } from '../../@types/form.type';
+// import { withRouter, RouteComponentProps } from "react-router-dom";
 
 const loginSchema = yup.object({
     username: yup.string().min(6).required(),
@@ -12,9 +12,14 @@ const loginSchema = yup.object({
     verifypassword: yup.string().min(6).required(),
 });
 
-type IProps = RouteComponentProps;
+interface BaseProps{
+    onSubmit: (formData: IFormType)=>void
+}
+
+type IProps = BaseProps;
 
 function PRegister(props: IProps){
+
     const renderPanel=()=>{
         return (
             <div className="col-lg-6 col-md-12 panel-register h-100">
@@ -27,18 +32,14 @@ function PRegister(props: IProps){
             </div>
         )
     }
-
-    const onSubmit =(formData: IFormType)=>{
-        props.history.push('/dashboard')
-    }
-
+   
     const renderForm=()=>{
         return (
             <div className="col-lg-6 col-md-12 effect">
                 <Formik
                     validateOnBlur={false}
                     validateOnChange={false}
-                    onSubmit={onSubmit}
+                    onSubmit={props.onSubmit}
                     initialValues={{
                         username:'',
                         password:'',
@@ -93,4 +94,4 @@ function PRegister(props: IProps){
         </div>
     )
 }
-export default withRouter(PRegister);
+export default PRegister;

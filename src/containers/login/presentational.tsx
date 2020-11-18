@@ -3,15 +3,16 @@ import logo from '../../assets/images/panel.svg';
 import {Formik} from 'formik';
 import { Form } from 'antd';
 import * as yup from 'yup';
-import {IFormType } from '../../@types/login.type';
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import {IFormType } from '../../@types/form.type';
 
 const loginSchema = yup.object({
     username: yup.string().min(6).required(),
     password: yup.string().min(6).required(),
 });
 
-type IProps = RouteComponentProps 
+interface IProps {
+    onSubmit: (formData: IFormType) => void;
+}
 
 function PLogin(props: IProps){
     const renderPanel=()=>{
@@ -29,17 +30,13 @@ function PLogin(props: IProps){
         )
     }
 
-    const onSubmit =(formData: IFormType)=>{
-        props.history.push('/dashboard')
-    }
-
     const renderForm=()=>{
         return (
             <div className="col-lg-6 col-md-12">
                 <Formik
                     validateOnBlur={false}
                     validateOnChange={false}
-                    onSubmit={onSubmit}
+                    onSubmit={props.onSubmit}
                     initialValues={{
                         username:'',
                         password:''
@@ -87,4 +84,4 @@ function PLogin(props: IProps){
         </div>
     )
 }
-export default withRouter(PLogin);
+export default PLogin;
