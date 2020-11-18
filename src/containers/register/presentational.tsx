@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/images/panel.svg';
+import logo from '../../assets/images/car.svg';
 import {Formik} from 'formik';
 import { Form } from 'antd';
 import * as yup from 'yup';
@@ -9,21 +9,20 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 const loginSchema = yup.object({
     username: yup.string().min(6).required(),
     password: yup.string().min(6).required(),
+    verifypassword: yup.string().min(6).required(),
 });
 
-type IProps = RouteComponentProps 
+type IProps = RouteComponentProps;
 
-function PLogin(props: IProps){
+function PRegister(props: IProps){
     const renderPanel=()=>{
         return (
-            <div className="col-lg-6 col-md-12 panel-login h-100">
+            <div className="col-lg-6 col-md-12 panel-register h-100">
                 <div className="panel-content">
-                    <img className='ltr2s' src={logo} />
-                    <div className="ltr3s d-flex flex-column w-100 align-items-center">
-                        <h2 className='text-lg'>Travel</h2>
-                        <p className='text-md'>I haven't account? Create now</p>
-                        <button className='button-signup button-base text-white text-md'><a href='/sign-up'>Sign up</a></button>
-                    </div>
+                    <img src={logo} />
+                    <h2 className='text-lg '>Travel</h2>
+                    <p className='text-md '>I haven account? Login now</p>
+                    <button className='button-signup button-base text-white text-md'><a href='/sign-in'>Sign in</a></button>
                 </div>
             </div>
         )
@@ -35,14 +34,15 @@ function PLogin(props: IProps){
 
     const renderForm=()=>{
         return (
-            <div className="col-lg-6 col-md-12">
+            <div className="col-lg-6 col-md-12 effect">
                 <Formik
                     validateOnBlur={false}
                     validateOnChange={false}
                     onSubmit={onSubmit}
                     initialValues={{
                         username:'',
-                        password:''
+                        password:'',
+                        verifypassword: '',
                     } as IFormType}
                     validationSchema={loginSchema}
                 >
@@ -54,9 +54,8 @@ function PLogin(props: IProps){
                     })=>(
                         <Form className='h-100'>
                             <div className="d-flex flex-column form justify-content-center align-items-center w-100 h-100">
-                                <p className='text-lg font-bold rtl1s'>Sign in</p>
+                                <p className='text-lg font-bold'>Sign up</p>
                                 <input 
-                                    className='rtl2s'
                                     name='username'
                                     placeholder='Username' 
                                     onChange={handleChange}
@@ -64,7 +63,6 @@ function PLogin(props: IProps){
                                 />
                                 {!!errors.username && <p className='mb-0 text-danger text-sm text-base'>{errors.username}</p> }
                                 <input 
-                                    className='rtl3s'
                                     name='password'
                                     type='password'
                                     placeholder='Password' 
@@ -72,7 +70,15 @@ function PLogin(props: IProps){
                                     value={values.password}
                                 />
                                 {!!errors.password && <p className='mb-0 text-danger text-sm text-base'>{errors.password}</p> }
-                                <button className='rtl4s button-base text-white text-sm text-uppercase' onClick={()=>handleSubmit()}>Login</button>
+                                <input 
+                                    name='verifypassword'
+                                    type='password'
+                                    placeholder='Verify password' 
+                                    onChange={handleChange}
+                                    value={values.verifypassword}
+                                />
+                                {!!errors.verifypassword && <p className='mb-0 text-danger text-sm text-base'>{errors.verifypassword}</p> }
+                                <button className='button-base text-white text-sm text-uppercase' onClick={()=>handleSubmit()}>Register</button>
                             </div>
                         </Form>
                     )}
@@ -81,10 +87,10 @@ function PLogin(props: IProps){
         )
     }
     return (
-        <div className="row login-section w-100 h-100">
-            {renderPanel()}
+        <div className="row register-section w-100 h-100">
             {renderForm()}
+            {renderPanel()}
         </div>
     )
 }
-export default withRouter(PLogin);
+export default withRouter(PRegister);

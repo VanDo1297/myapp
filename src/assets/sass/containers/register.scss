@@ -1,12 +1,12 @@
-.login-section{
+@import '../variable.scss';
+.register-section{
     width: 100%;
     height: 100vh;
     background-color: white;
     position: relative;
-    overflow: hidden;
 }
 
-.panel-login{
+.panel-register{
     width: 100%;
     height: 100%;
     min-height: 100vh;
@@ -18,8 +18,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: $primary-color;
-        border-radius: 0 0 90% 0/0 0 100% 0;
+        background-image: linear-gradient(45deg,$light-yellow-color,$light-pink-color);
+        border-radius: 0 0 0 90%/0 0  0 100%;
         transform: scaleY(1.4);
     }
 }

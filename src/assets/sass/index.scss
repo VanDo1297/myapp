@@ -1,8 +1,9 @@
 @import './common.scss';
 @import './custom.scss';
 @import './variable.scss';
-@import './containers/login.scss';
+@import './containers/index.scss';
 @import '~antd/dist/antd.css';
+@import './animation.scss';
 body{
     margin: 0;
     font-family: sans-serif;

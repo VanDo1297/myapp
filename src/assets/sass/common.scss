@@ -1,5 +1,13 @@
+@import './variable.scss';
+.row{
+    margin: unset !important;
+}
 .middle{
     justify-content: center;
+}
+
+.font-bold{
+    font-weight: bold;
 }
 
 .center{
@@ -16,4 +24,15 @@
 
 .text-lg{
     font-size: 48px;
+}
+
+.text-primary{
+    color: $primary-color;
+}
+.text-light-pink{
+    color :$light-pink-color !important;
+}
+
+.text-light-yellow{
+    color :$light-yellow-color !important;
 }
