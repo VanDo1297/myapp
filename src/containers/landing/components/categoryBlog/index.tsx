@@ -1,21 +1,17 @@
 import React from 'react';
-import { TourItem } from '../../../../@types/tour.type';
+import { BlogItem } from '../../../../@types/blog.type';
+import moment from 'moment';
 interface IProps{
-    tours: TourItem[]
+    blogs: BlogItem[]
 }
-const CategoryTour = React.memo((props:IProps)=>{
-    const renderTourItem =(tour: TourItem)=>{
+const CategoryBlog = React.memo((props:IProps)=>{
+    const renderBlogItem =(blog: BlogItem)=>{
         return (
-            <div key={tour.id} className='col-lg-4 col-md-6 col-sm-12 tour-item' data-aos="fade-up" data-aos-duration='1500'>
-                <img src={tour.image} alt=""/>
-                <div className="content">
-                    <p className="mb-0 tour-price pointer">
-                        {tour.price} VND
-                    </p>
-                    <p className="mb-0 tour-name">
-                        {tour.name}
-                    </p>
-                </div>
+            <div key={blog.id} className='col-lg-4 col-md-6 col-sm-12 blog-item'>
+                <img src={blog.image} alt=""/>
+                <p className='mb-2 mt-2 blog-name'>{blog.title}</p>
+                <p className='mb-2 mt-2'><span className='blog-date'>{moment(blog.date).format('LL')}  by </span><span className='blog-own'>{blog.own}</span></p>
+                <p className='mb-2 mt-2 blog-content'>{blog.content}</p>
             </div>
         )
     }
@@ -26,11 +22,11 @@ const CategoryTour = React.memo((props:IProps)=>{
             </div>
             <div className='row w-100 ' >
                 {
-                    props.tours.map(tour => renderTourItem(tour))
+                    props.blogs.map(blog => renderBlogItem(blog))
                 }
             </div>
         </div>
     )
 })
 
-export default CategoryTour;
+export default CategoryBlog;

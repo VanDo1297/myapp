@@ -7,6 +7,15 @@
     border-radius: 7px;
 }
 
+.input-base{
+   min-width: 250px;
+   height: 40px !important;
+   border: 1px solid black;
+   padding: 10px;
+   border-radius: 4px;
+}
+
+
 
 .nav-des{
     list-style: none;
@@ -76,6 +85,15 @@
     >input{
         width: 400px;
         height: 50px;
+        padding: 20px;
+        margin: 10px 0px;
+        border-radius: 25px;
+        border: unset;
+        background-color:rgba($color: gray, $alpha: 0.2);
+    }
+
+    >textarea{
+        width: 400px;
         padding: 20px;
         margin: 10px 0px;
         border-radius: 25px;

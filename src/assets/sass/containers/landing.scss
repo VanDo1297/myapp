@@ -4,7 +4,25 @@
     color:rgb(148, 3, 3);
 }
 
+.bg{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   background-image: url('../../images/travel-1.jpg');
+   margin-top: 50px;
+   background-size: cover;
+   background-position: center;
+}
+.bg-1{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 .banner{
+    background-color: white ;
     height: 900px;
     width: 100%;
     background-image: url('../../images/travel-1.jpg');
@@ -73,6 +91,37 @@
     }
 }
 
+.blog-item{
+    position: relative;
+    margin-bottom: 10px;
+    padding: unset !important;
+    padding-right: 10px !important;
+    >img{
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+    .blog-name{
+        color: black;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .blog-content{
+        color: rgba(0,0,0, 0.6);
+        font-size: 18px;
+    }
+
+    .blog-date{
+        color: rgba(0,0,0, 0.3);
+        font-size: 18px;
+    }
+    .blog-own{
+        color: rgb(239, 186, 108);
+        font-size: 18px;
+    }
+}
+
 .categorys{
     .category-title{
         position: relative;
@@ -109,6 +158,16 @@
            @include name;
         }
     }
+}
+
+.gettouch{
+    width: 100%;
+    height: 350px;
+    background-color: rgba($light-yellow-color, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 768px){

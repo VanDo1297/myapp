@@ -1,0 +1,10 @@
+.footer{
+    padding: 20px;
+    z-index: 1;
+    position: relative;
+    >.form{
+        width: 40%;
+        display: flex;
+        margin-left: auto;
+    }
+}
