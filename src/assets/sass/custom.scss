@@ -38,13 +38,37 @@
 
 .nav-mobile{
     display: none;
+    margin-right: 10px;
+    align-items: center;
+    cursor: pointer;
     .togglenav{
         position: absolute;
         width: 300px;
-        height: 300px;
-        background-color: lightgreen;
-        left: -250px;
+        height: 200px;
+        border: 1px solid black;
+        box-shadow: 0px 6px 19px rgba(130, 40, 28, 0.3);
+        left: -270px;
         top: 50px;
+        >a{
+            height: 50px;
+            color: black;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            &:hover{
+                background-color: lightcyan;
+                color: lightslategrey;
+                font-weight: bold;
+            }
+        }
+    }
+    .navb-toggle{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
     }
 }
 
@@ -124,6 +148,21 @@
         display: none !important;
     }
     .nav-mobile{
-        display: block;
+        display: flex;
     }
+}
+
+[data-aos^=fade][data-aos^=fade].aos-animate {
+    opacity: 1;
+    transform: translate(0);
+}
+[data-aos][data-aos][data-aos-duration="800"], body[data-aos-duration="800"] [data-aos] {
+    transition-duration: .8s;
+}
+[data-aos^=fade][data-aos^=fade] {
+    opacity: 0;
+    transition-property: opacity,transform;
+}
+[data-aos=fade-right] {
+    transform: translate(-100px);
 }

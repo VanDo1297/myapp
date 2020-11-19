@@ -1,0 +1,27 @@
+.box-image{
+    max-width: 100%;
+    height: auto;
+}
+
+.title{
+    &:after{
+        content: "What new's";
+        font-family: sans-serif;
+        position: absolute;
+        top:-35px;
+        left: 0px;
+        opacity: 0.2;
+        font-weight:bolder;
+        font-size: 64px;
+    }
+    .category{
+        font-weight: 700;
+        font-size: 32px;
+        color:rgb(148, 3, 3);
+    }
+}
+.description{
+    margin-top: 10px;
+    font-size: 18px;
+    color:black;
+}

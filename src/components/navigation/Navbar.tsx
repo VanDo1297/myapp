@@ -1,6 +1,7 @@
 import React from 'react';
 import {navbars} from '../../helpers';
 import logo from '../../assets/images/logo.svg'
+import { FaBars } from 'react-icons/fa';
 
 function Navbar(){
 
@@ -26,14 +27,15 @@ function Navbar(){
                 }
             </ul>
             <div onBlur={toggleNav} tabIndex={-1} className='nav-mobile ml-auto p-relative'>
-                <button onClick={toggleNav}> Click !</button>
+                <div className='navb-toggle' onClick={toggleNav}> <FaBars /></div>
                 {
                     isToggle && (
                         <div className='togglenav'>
-                            <p>aa</p>
-                            <p>aa</p>
-                            <p>aa</p>
-                            <p>aa</p>
+                            {
+                                 navbars.map(navbar=>{
+                                     return  <a className="nav-link" href={navbar.path}>{navbar.name}</a>
+                                 })
+                            }
                         </div>
                     )
                 }

@@ -23,7 +23,7 @@ function PRegister(props: IProps){
     const renderPanel=()=>{
         return (
             <div className="col-lg-6 col-md-12 panel-register h-100">
-                <div className="panel-content">
+                <div className="panel-content aos-init aos-animate" data-aos='fade-right'>
                     <img src={logo} />
                     <h2 className='text-lg '>Travel</h2>
                     <p className='text-md '>I haven account? Login now</p>

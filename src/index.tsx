@@ -1,10 +1,13 @@
+// @ts-ignore
+import AOS from 'aos';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './assets/sass/index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import 'aos/dist/aos.css';
+AOS.init();
 ReactDOM.render(
     <React.StrictMode>
         <App />
