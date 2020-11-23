@@ -1,24 +1,24 @@
-import React from 'react'
+import React,{useContext} from 'react';
 import { RouteProps, Redirect, Route, RouteComponentProps } from 'react-router-dom'
+import {IValue, GlobalContext} from '../../context/provider';
 
-type UserRestrictedRouteProps = RouteProps & RouteComponentProps;
+type UserRestrictedRouteProps = RouteProps;
 
-class UserRestrictedRoute extends React.Component<UserRestrictedRouteProps, any> {
-    render() {
-        let CompType = this.props.component as React.ComponentClass;
-        return (
-            <Route render={(props) => {
-                if (this.props.path !== props.location.pathname) {
-                    return null;
-                }
-                // if (tokenSet) {
-                //     return (<CompType {...props} />);
-                // } else {
-                //     return (<Redirect to="/" />);
-                // }
-            }} />
-        );
-    }
+const UserRestrictedRoute = (props : UserRestrictedRouteProps) => {
+
+    const {authState} = useContext(GlobalContext) as IValue;
+    let tokenSet =  authState.token;
+    let CompType = props.component as React.ComponentClass;
+
+    return (
+        <Route render={(props) => {
+            if (tokenSet) {
+                return (<CompType {...props} />);
+            } else {
+                return (<Redirect to="/login" />);
+            }
+        }} />
+    );
 }
 
 export default UserRestrictedRoute;
