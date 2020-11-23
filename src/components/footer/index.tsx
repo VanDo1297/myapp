@@ -1,5 +1,17 @@
 import React from 'react';
-
+import {
+    FacebookIcon,
+    LinkedinIcon,
+    RedditIcon,
+    TelegramIcon,
+    TwitterIcon,
+    FacebookShareButton,
+    LinkedinShareButton,
+    RedditShareButton,
+    TelegramShareButton,
+    TwitterShareButton
+  } from "react-share";
+  
 function Footer(){
 
     React.useEffect(()=>{
@@ -50,10 +62,30 @@ function Footer(){
             </div>
         </div>
     }
+
+    const renderInformation =()=>{
+        return (
+            <div className="information">
+                <p className="mb-0">Location: </p>
+                <p className="information-location">Newtown Apaterment, 18 Street, Thu Duc Province, Ho Chi Minh City.</p>
+                <p className="mb-0">Email:</p>
+                <p className="information-email"><a href="mailto:docs2gtvt@gmail.com">docs2gtvt@gmail.com</a></p>
+                <p className="mb-0">Social contact</p>
+                <div className="d-flex flex-row w-100 social-link">
+                    <FacebookShareButton url={''}><FacebookIcon size={32} round={true} /></FacebookShareButton>
+                    <TwitterShareButton url={''}><TwitterIcon size={32} round={true} /></TwitterShareButton>
+                    <LinkedinShareButton url={''}><LinkedinIcon size={32} round={true} /></LinkedinShareButton>
+                    <RedditShareButton url={''}><RedditIcon size={32} round={true} /></RedditShareButton>
+                    <TelegramShareButton url={''}><TelegramIcon size={32} round={true} /></TelegramShareButton>
+                </div>
+            </div>
+        )
+    }
     return (
-        <div className='footer bg-darkblue d-flex flex-row'>
+        <div className='footer bg-darkblue d-flex'>
             <div className="infor">
                 {renderClock()}
+                {renderInformation()}
             </div>
             <div className="form  d-flex flex-column align-items-center">
                 <p className="contact-title text-base text-md">Contact with me</p>

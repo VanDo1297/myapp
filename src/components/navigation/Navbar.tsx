@@ -1,6 +1,6 @@
 import React from 'react';
 import {navbars} from '../../helpers';
-import logo from '../../assets/images/logo.svg'
+import logo from '../../assets/images/logo.png';
 import { FaBars } from 'react-icons/fa';
 
 function Navbar(){

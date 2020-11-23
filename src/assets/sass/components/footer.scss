@@ -2,9 +2,72 @@
     padding: 20px;
     z-index: 1;
     position: relative;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
     >.form{
         width: 40%;
         display: flex;
-        margin-left: auto;
+        .contact-title{
+            color: white;
+        }
+        >input{
+            width: 100% !important;
+        }
+        >textarea{
+            width: 100% !important;
+        }
+    }
+
+    .infor{
+        display: flex;
+        justify-content: center;
+        .information{
+            height: 100%;
+            max-width: 300px;
+            margin-left: 20px;
+            >p{
+                color: white;
+            }
+            .information-location{
+                margin-top: 10px;
+                font-size: 14px;
+            }
+            .information-email{
+                margin-top: 10px;
+                font-size: 14px;
+            }
+            .social-link{
+                margin-top: 10px;
+                >button{
+                    &:hover{
+                        transform: scale(1.2);
+                    }
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .footer{
+        flex-direction: column !important;
+        >.form{
+            margin-top: 30px;
+            width: 100%;
+            align-items: unset !important;
+        }
+    }
+}
+@media screen and (max-width: 480px){
+    .footer{
+        .infor{
+            flex-direction: column !important;
+            .information{
+                margin-top: 30px;
+                margin-left: unset !important;
+            }
+        }
     }
 }

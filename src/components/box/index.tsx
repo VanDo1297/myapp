@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../assets/images/traveler.jpg';
+import image from '../../assets/images/polina.jpg';
 interface IProps{
     idImage: string,
     classname?:string,

@@ -37,8 +37,8 @@ function PLanding(props: IProps){
                     </div>
                 </div>
                 <div className="gettouch">
-                    <p className="mb-0 text-lg text-white font-weight-bold">Join and Trip</p>
-                    <p className="mb-0 text-md text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p className="mb-0 text-lg text-white font-weight-bold">Exclusive Travel Specials</p>
+                    <p className="mb-0 text-md text-white">Discover a New Destination</p>
                     <button className="button-base bg-yellow text-sm text-uppercase text-white">Join now</button>
                 </div>
             </div>
