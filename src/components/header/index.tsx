@@ -12,11 +12,10 @@ function Header(){
     React.useEffect(() => {
         auth.onAuthStateChanged(userAuth => {
             console.log(userAuth);
-            console.log(currentUser);
             setCurrentUser(userAuth);
         })
     },[])
-
+    console.log(currentUser);
     const SignInGoogle =()=>{
         signInWithGoogle()
     }
