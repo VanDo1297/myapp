@@ -1,6 +1,5 @@
 import axios from "axios";
-export default (history = {} as any) => {
-
+const AxiosInstance = (history = {} as any) => {
   const baseURL = process.env.REACT_APP_BACKEND_URL;
 
   let headers = {} as any;
@@ -28,8 +27,7 @@ export default (history = {} as any) => {
 
       if (error.response.status === 403) {
         localStorage.removeItem("token");
-
-        if (history) {
+        if(history) {
             history && history.push("/auth/login");
         } else {
           window.location.href = "/auth/login";
@@ -44,3 +42,5 @@ export default (history = {} as any) => {
 
   return axiosInstance;
 };
+
+export default AxiosInstance;

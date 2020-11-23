@@ -1,5 +1,3 @@
-import { ReducerWithoutAction } from "react";
-
 export interface Provider{
     reducer: any, 
     initialState: {}, 

@@ -18,7 +18,7 @@ function Header(){
                 {
                     navbars.map(navbar=>{
                         return (
-                            <li className="nav-item active">
+                            <li key={navbar.name} className="nav-item active">
                                 <a className="nav-link" href={navbar.path}>{navbar.name}</a>
                                 <div className='nav-line' />
                             </li>
@@ -33,7 +33,7 @@ function Header(){
                         <div className='togglenav'>
                             {
                                  navbars.map(navbar=>{
-                                     return  <a className="nav-link" href={navbar.path}>{navbar.name}</a>
+                                     return  <a key={navbar.name} className="nav-link" href={navbar.path}>{navbar.name}</a>
                                  })
                             }
                         </div>

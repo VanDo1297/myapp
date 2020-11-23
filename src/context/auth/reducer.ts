@@ -1,8 +1,8 @@
 import * as authConts from '../../constants/auth';
 import {IAuth} from '../../@types/auth.type';
 
-let user = !localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser') as string) ? JSON.parse(localStorage.getItem('currentUser') as string) ?.user : '';
-let token = !localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser') as string)? JSON.parse(localStorage.getItem('currentUser') as string).token : '';
+let user = localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser') as string)? JSON.parse(localStorage.getItem('currentUser') as string).user : '';
+let token = localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser') as string)? JSON.parse(localStorage.getItem('currentUser') as string).token : '';
 
 export const initialState = {
   user: user || "",

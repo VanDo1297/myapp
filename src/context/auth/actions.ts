@@ -1,4 +1,4 @@
-import {LOGOUT, LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN} from '../../constants/auth';
+import {LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN} from '../../constants/auth';
 import {ILogin} from '../../@types/auth.type';
 import { login } from '../../services/authService';
 
