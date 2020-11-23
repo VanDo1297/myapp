@@ -3,9 +3,7 @@ import Navbar from '../navigation/Navbar';
 
 function Header(){
     return (
-        <div>
-            <Navbar/>
-        </div>
+        <Navbar/>
     )
 }
 export default Header;

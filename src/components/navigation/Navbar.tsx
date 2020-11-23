@@ -12,7 +12,7 @@ function Navbar(){
     }
 
     return (
-        <nav className="header d-flex flex-row">
+        <nav className="header d-flex flex-row w-100">
             <img style={{width:'50px'}} src={logo} alt=''/>
             <ul className="ml-auto nav-des">
                 {
