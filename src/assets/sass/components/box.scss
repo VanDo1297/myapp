@@ -24,4 +24,24 @@
     margin-top: 10px;
     font-size: 18px;
     color:black;
+    margin-top: 3rem;
+}
+
+@media screen and (max-width:540px ){
+    .title{
+        margin-top: 10px;
+        .category{
+            font-size: 18px;
+        }
+        &:after{
+            font-size: 30px;
+            font-weight: 32px;
+            top: 0px;
+            left: 14px;
+        }
+    }
+    .description{
+        margin-top: 10px !important;
+        font-size: 14px;
+    }
 }

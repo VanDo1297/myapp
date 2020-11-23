@@ -19,7 +19,7 @@ function PLanding(props: IProps){
                 <Banner />
                 <div className='w-100  bg-white pt-5'>
                     <div className="container">
-                        <div className="row align-items-center">
+                        <div className="align-items-center">
                             <Box 
                                 idImage='image1'
                                 categoryTitle={`What new's`}

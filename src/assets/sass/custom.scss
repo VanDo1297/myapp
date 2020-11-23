@@ -147,6 +147,10 @@
     }
 }
 
+.col-sm-12{
+    padding: unset !important;
+}
+
 @media screen and (max-width:990px){
     .panel-content{
         h2{

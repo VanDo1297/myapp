@@ -10,15 +10,15 @@ interface IProps{
 const Box= React.memo((props: IProps)=>{
     
     return (
-        <div className={`d-flex ${props.classname}`}>
-            <div className="col-md-6 aos-init aos-animate" data-aos='fade-right'>
+        <div className={`d-flex ${props.classname} row`}>
+            <div className="col-md-6 col-sm-12 aos-init aos-animate" data-aos='fade-right'>
                 <img className='box-image' src={image} alt=''/>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 col-sm-12">
                 <div className="title">
                     <p className="category mb-0">{props.categoryTitle}</p>
                 </div>
-                <p className="description mb-0 mt-5">{props.description}</p>
+                <p className="description mb-0">{props.description}</p>
             </div>
         </div>
         

@@ -82,3 +82,34 @@
         }
     }
 }
+
+@media screen and (max-width:540px ){
+    .clock{
+        width: 150px;
+        height: 150px;
+        .hour .hr{
+            width: 70px;
+            height: 70px;
+            &::before{
+                width: 5px;
+                height: 30px;
+            }
+        }
+        .min .mn{
+            width: 100px;
+            height: 100px;
+            &::before{
+                width: 3px;
+                height: 60px;
+            }
+        }
+        .sec .sc{
+            width: 120px;
+            height: 120px;
+            &::before{
+                width: 2px;
+                height: 70px;
+            }
+        }
+    }
+}

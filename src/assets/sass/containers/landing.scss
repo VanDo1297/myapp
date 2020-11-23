@@ -81,6 +81,7 @@
             }
         }
         .tour-name{
+            margin-top: 20px;
             width: 90%;
             display: flex;
             text-align: center;
@@ -175,5 +176,77 @@
         padding-left:unset;
         align-items: center;
         justify-content: flex-start;
+    }
+}
+
+
+@media screen and (max-width:540px ){
+    .banner{
+        justify-content: center;
+        h2{
+            font-size: 40px;
+        }
+        >p{
+            font-size: 14px;
+        }
+    }
+    .categorys{
+        .category-title{
+            margin-top: 10px;
+            .name{
+                font-size: 18px;
+            }
+            &:after{
+                font-size: 30px;
+                font-weight: 32px;
+                top: -10px;
+            }
+        }
+        .blog-title{
+            margin-top: 10px;
+            &:after{
+                font-size: 30px;
+                font-weight: 32px;
+                top: -10px;
+            }
+            .name{
+               @include name;
+               font-size: 18px !important;
+            }
+        }
+    }
+    .description{
+        margin-top: 10px !important;
+        font-size: 14px;
+    }
+
+    .blog-item{
+        .blog-name{
+            font-size: 16px;
+        }
+        .blog-date{
+            font-size: 14px;
+        }
+        .blog-own{
+            font-size: 14px;
+        }
+        .blog-content{
+            font-size: 16px;
+        }
+    }
+
+    .gettouch{
+        >p{
+            &:nth-child(1){
+                font-size: 30px;
+            }
+            &:nth-child(2){
+                font-size: 18px;
+            }
+        }
+        >button{
+            margin-top: 10px;
+            font-size: 16px;
+        }
     }
 }
