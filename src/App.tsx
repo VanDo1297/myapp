@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Dashboard from './containers/dashboard';
+// import Dashboard from './containers/dashboard';
 import Header from './components/header';
 import Login from './containers/login';
 import Register from './containers/register';

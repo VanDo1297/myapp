@@ -13,7 +13,7 @@ function Navbar(){
 
     return (
         <nav className="header d-flex flex-row">
-            <img style={{width:'50px'}} src={logo} />
+            <img style={{width:'50px'}} src={logo} alt=''/>
             <ul className="ml-auto nav-des">
                 {
                     navbars.map(navbar=>{

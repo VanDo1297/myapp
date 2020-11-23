@@ -24,7 +24,7 @@ function PRegister(props: IProps){
         return (
             <div className="col-lg-6 col-md-12 panel-register h-100">
                 <div className="panel-content aos-init aos-animate" data-aos='fade-right'>
-                    <img src={logo} />
+                    <img src={logo} alt=''/>
                     <h2 className='text-lg '>Travel</h2>
                     <p className='text-md '>I haven account? Login now</p>
                     <button className='button-signup button-base text-white text-md'><a href='/sign-in'>Sign in</a></button>

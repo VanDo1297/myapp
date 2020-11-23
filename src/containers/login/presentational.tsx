@@ -19,7 +19,7 @@ function PLogin(props: IProps){
         return (
             <div className="col-lg-6 col-md-12 panel-login h-100">
                 <div className="panel-content" data-aos='fade-right' data-aos-duration="3000">
-                    <img className='ltr2s' src={logo} />
+                    <img className='ltr2s' src={logo} alt=''/>
                     <div className="ltr3s d-flex flex-column w-100 align-items-center">
                         <h2 className='text-lg'>Travel</h2>
                         <p className='text-md'>I haven't account? Create now</p>
