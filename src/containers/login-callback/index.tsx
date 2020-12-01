@@ -17,14 +17,10 @@ const LoginCallBack=(props: IProps)=>{
 
     useEffect(()=>{
         if(authState.token){
-            goTo('/home')
+            props.history.push('/home')
         }  
         setLoading(authState.loading)
-    },[authState])
-
-    const goTo=(url: string)=>{
-        props.history.push(url)
-    }
+    },[authState, props.history])
 
     const getAccessToken = async ()=>{
         const parsed = queryString.parse(props.location.search);
