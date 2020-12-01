@@ -1,6 +1,6 @@
 import axios from "axios";
 const AxiosInstance = (history = {} as any) => {
-  const baseURL = process.env.REACT_APP_BACKEND_URL;
+  const baseURL = 'http://localhost:8888';
 
   let headers = {} as any;
 
@@ -43,4 +43,13 @@ const AxiosInstance = (history = {} as any) => {
   return axiosInstance;
 };
 
-export default AxiosInstance;
+const AxiosAuthInstance =()=>{
+  const baseURl = 'https://oauth2.googleapis.com/'
+  const axiosAuthInstance = axios.create({
+    baseURL: baseURl,
+  });
+
+  return axiosAuthInstance;
+}
+
+export {AxiosAuthInstance, AxiosInstance};

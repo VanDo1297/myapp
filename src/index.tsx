@@ -7,7 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import './assets/sass/index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'aos/dist/aos.css';
+import * as dotenv from 'dotenv';
 AOS.init();
+dotenv.config();
 ReactDOM.render(
     <React.StrictMode>
         <App />

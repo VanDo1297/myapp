@@ -2,23 +2,23 @@ import React from 'react';
 import {navbars} from '../../helpers';
 import logo from '../../assets/images/logo.png';
 import { FaBars } from 'react-icons/fa';
-import {signInWithGoogle, auth} from '../../services/firebase';
+import { GlobalContext, IValue } from "../../context/provider";
+import { UserAccount } from '../../@types/servers/auth.types';
 
 function Header(){
-
+    const {authState} = React.useContext(GlobalContext) as IValue;
     const [ isToggle, setToggle ]= React.useState(false);
-    const [currentUser,setCurrentUser] = React.useState({} as any);
+    const [currentUser,setCurrentUser] = React.useState({} as UserAccount);
+    const [path, setPath] = React.useState('');
+
+    React.useEffect(()=>{
+        setPath(window.location.pathname)
+    },[])
 
     React.useEffect(() => {
-        auth.onAuthStateChanged(userAuth => {
-            console.log(userAuth);
-            setCurrentUser(userAuth);
-        })
-    },[])
-    console.log(currentUser);
-    const SignInGoogle =()=>{
-        signInWithGoogle()
-    }
+        setCurrentUser(authState.user)
+    },[authState])
+
     const toggleNav =()=>{
         setToggle(!isToggle);
     }
@@ -53,13 +53,17 @@ function Header(){
                 }
             </div>
 
-            <div className="account ml-auto mr-2">
-            <button
-                onClick={SignInGoogle}
-                className="py-2 text-white button-base">
-                Sign in Google
-            </button>
-            </div>
+            {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-column align-items-center">
+                {currentUser.accountId ? (
+                        <div className='d-flex flex-row current-user align-items-center'> 
+                            <img src={currentUser.avatarUrl} alt=""/>
+                            <p className="mb-0 text-white">{currentUser.displayName}</p>
+                        </div>
+                    ) : (
+                        <a href='/login' className='mb-0'>Sign in</a>
+                    )
+                }
+            </div>}
         </nav>
     )
 }

@@ -1,23 +1,21 @@
-import React,{useContext} from 'react';
+import React from 'react';
 import Presentational from './presentational';
-import {IFormType } from '../../@types/form.type';
 import {RouteComponentProps} from 'react-router-dom';
-import { GlobalContext, IValue } from "../../context/provider";
-import {loginUser} from '../../context/auth/actions';
+import config from '../../config'
 
 interface IProps extends RouteComponentProps<{}>{}
 
 function Login(props: IProps){
 
-    const {authDispatch: dispatch, authState} = useContext(GlobalContext) as IValue;
+    console.log(props);
 
-    const onSubmit =async (formData: IFormType)=>{
-        console.log(authState.loading);
-        loginUser(formData)(dispatch);
+    const handleLoginWithGoogle =()=>{
+        const path = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${config.AUTH.APP_CLIENT_ID}&response_type=code&scope=openid email profile&access_type=offline&redirect_uri=${window.location.origin}/login-callback`
+        window.open(path)
     }
 
     return (
-        <Presentational  onSubmit={onSubmit}/>
+        <Presentational handleLoginWithGoogle={handleLoginWithGoogle} />
     )
 }
 export default Login;

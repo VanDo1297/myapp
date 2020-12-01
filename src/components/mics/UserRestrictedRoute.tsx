@@ -1,7 +1,6 @@
 import React,{useContext} from 'react';
 import { RouteProps, Redirect, Route } from 'react-router-dom'
 import {IValue, GlobalContext} from '../../context/provider';
-
 type UserRestrictedRouteProps = RouteProps;
 
 const UserRestrictedRoute = (props : UserRestrictedRouteProps) => {

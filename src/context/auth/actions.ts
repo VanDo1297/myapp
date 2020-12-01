@@ -1,23 +1,35 @@
+import jwt from 'jsonwebtoken';
+import { AxiosResponse } from 'axios';
 import {LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN} from '../../constants/auth';
-import {ILogin} from '../../@types/auth.type';
-import { login } from '../../services/authService';
+import { getAccessToken } from '../../services/authService';
+import {AccessTokenResponse, UserAccount} from '../../@types/servers/auth.types'
 
-export const loginUser=({username, password}: ILogin) => (dispatch: any)=> {
-
+export const getAccessTokenActions= (code: string) => async (dispatch: any)=> {
     dispatch({
         type: LOGIN,
     });
-
     try {
-        login({username, password}).then((res: any)=>{
-            console.log(res);
+        await getAccessToken(code).then((res: AxiosResponse<AccessTokenResponse>)=>{
+            let userAccount = {} as UserAccount;
+            const u = jwt.decode(res.data.data.id_token) as any;
+            if(u){
+                userAccount = {
+                    accountId: u['sub'],
+                    displayName:u['name'],
+                    emailAddress: u['email'],
+                    avatarUrl: u['picture'],
+                } as UserAccount;
+            }
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: res.data,
+                payload: {
+                    user: userAccount,
+                    token : res.data.data.id_token
+                }
             });
         })
     } catch (error) {
         dispatch({ type: LOGIN_FAILURE, error: error });
     }
-
 }
+

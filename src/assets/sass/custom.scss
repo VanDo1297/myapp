@@ -20,10 +20,15 @@
 .nav-des{
     list-style: none;
     display: flex;
+    margin-bottom: 0;
     .nav-item{
-        >a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .nav-link{
             color: white;
             text-transform: uppercase;
+            padding: .5rem 1rem 0 1rem;
         }
         &:hover{
            >a{
@@ -39,7 +44,7 @@
             height: 2px;
             background-color: red;
             margin-left: -101%;
-            transition: margin 0.8s ease-out;
+            transition: margin 0.5s ease-out;
             opacity: 0;
         }
     }
@@ -154,17 +159,7 @@
 }
 
 @media screen and (max-width:990px){
-    .panel-content{
-        h2{
-            display: none;
-        }
-        p{
-            display: none;
-        }
-        img{
-            width: 50%;
-        }
-    }
+    
 }
 
 @media screen and (max-width: 768px){

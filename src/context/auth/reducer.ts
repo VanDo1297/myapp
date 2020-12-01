@@ -1,12 +1,10 @@
 import * as authConts from '../../constants/auth';
 import {IAuth} from '../../@types/auth.type';
-
-let user = localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser') as string)? JSON.parse(localStorage.getItem('currentUser') as string).user : '';
-let token = localStorage.getItem('currentUser') && JSON.parse(localStorage.getItem('currentUser') as string)? JSON.parse(localStorage.getItem('currentUser') as string).token : '';
+import {UserAccount} from '../../@types/servers/auth.types';
 
 export const initialState = {
-  user: user || "",
-  token :  token || null,
+  user: {} as UserAccount,
+  token : '',
   loading: false,
   errorMessage: null
 } as IAuth;
@@ -22,7 +20,7 @@ export const AuthReducer = (initialState: IAuth, action: any) => {
       return {
         ...initialState,
         user: action.payload.user,
-        token: action.payload.auth_token,
+        token: action.payload.token,
         loading: false
       };
     case authConts.LOGIN_FAILURE:
