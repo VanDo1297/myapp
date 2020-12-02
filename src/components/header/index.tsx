@@ -1,5 +1,5 @@
 import React from 'react';
-import {navbars} from '../../helpers';
+import {navbars} from '../../constants/mock';
 import logo from '../../assets/images/logo.png';
 import { FaBars } from 'react-icons/fa';
 import { GlobalContext, IValue } from "../../context/provider";
@@ -56,7 +56,7 @@ function Header(){
             {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-column align-items-center">
                 {currentUser.accountId ? (
                         <div className='d-flex flex-row current-user align-items-center'> 
-                            <img src={currentUser.avatarUrl} alt=""/>
+                            <img src={currentUser.avatarUrl || 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt=""/>
                             <p className="mb-0 text-white">{currentUser.displayName}</p>
                         </div>
                     ) : (

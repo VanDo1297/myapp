@@ -1,7 +1,7 @@
 import React from 'react';
 import Presentational from './presentational';
 import {RouteComponentProps} from 'react-router-dom';
-import {tours, blogs} from '../../helpers';
+import {tours, blogs} from '../../constants/mock';
 
 interface IProps extends RouteComponentProps<{}>{}
 

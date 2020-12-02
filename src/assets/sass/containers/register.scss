@@ -25,11 +25,25 @@
 }
 
 @media screen and (max-width:990px){
-    .panel-login{
-        height: 30%;
+    .panel-register{
         min-height: unset;
         &:before{
             background: white !important;
+        }
+        .panel-content{
+            >img{
+                width: 300px;
+            }
+            >h2{
+                color: #333;
+            }
+            >p{
+                color: #000;
+            }
+            .button-signup {
+                height: 50px;
+                border-color: red;
+            }
         }
     }
 }

@@ -14,7 +14,6 @@ function Login(props: IProps){
        await signInWithPopup()(dispath);
     }
     const handleLoginWithEmailAndPassword =async(data: ILogin)=>{
-        console.log(data.password);
         await signInWithEmailAndPassword(data.email, data.password)(dispath);
     }
 

@@ -32,6 +32,10 @@ function PLogin(props: IProps){
             <div className="col-lg-6 col-md-12 panel-login h-100">
                 <div className="panel-content" data-aos='fade-right' data-aos-duration="3000">
                     <img className='ltr2s' src={logo} alt=''/>
+                    <div className="register">
+                        <p className='text-md '>I haven't account? Register now</p>
+                        <button className='button-signup button-base text-white text-md'><a href='/register'>Sign Up</a></button>
+                    </div>
                 </div>
             </div>
         )

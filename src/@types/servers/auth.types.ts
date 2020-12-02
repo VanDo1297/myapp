@@ -12,7 +12,7 @@ export interface AccessTokenResponse{
 
 export interface UserAccount{
     accountId: string,
-    displayName:string,
-    emailAddress: string,
-    avatarUrl: string,
+    displayName:string | null,
+    emailAddress: string | null,
+    avatarUrl: string | null,
 }
