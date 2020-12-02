@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect, useContext} from 'react';
 import Presentational from './presentational';
 import {RouteComponentProps} from 'react-router-dom';
 import { GlobalContext, IValue } from "../../context/provider";
@@ -8,8 +8,14 @@ interface IProps extends RouteComponentProps<{}>{}
 
 function Login(props: IProps){
 
-    const {authDispatch:dispath,  authState} = React.useContext(GlobalContext) as IValue;
-    console.log(authState);
+    const {authDispatch:dispath,  authState} = useContext(GlobalContext) as IValue;
+
+    useEffect(()=>{
+        if(authState.user && authState.user.accountId){
+            props.history.push('/home')
+        }
+    },[authState, props.history])
+
     const handleLoginWithGoogle = async ()=>{
        await signInWithPopup()(dispath);
     }
