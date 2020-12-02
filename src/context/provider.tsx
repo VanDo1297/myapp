@@ -1,6 +1,17 @@
 import React, { createContext, useReducer } from 'react';
-import {AuthReducer, initialState} from './auth/reducer';
+import {AuthReducer} from './auth/reducer';
+import {IAuth} from '../@types/auth.type';
 
+const token=localStorage.getItem('token');
+const user= JSON.parse(localStorage.getItem('user') as string)
+
+export const initialState = {
+    user: user,
+    token : token,
+    loading: false,
+    errorMessage: ''
+  } as IAuth;
+  
 export const GlobalContext = createContext({});
 export interface IValue {
     authState: typeof initialState,

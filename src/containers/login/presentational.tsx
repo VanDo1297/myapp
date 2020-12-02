@@ -23,7 +23,6 @@ function PLogin(props: IProps){
     }
 
     const onSubmit =(formData: ILogin)=>{
-        console.log(formData);
         props.handleLoginWithEmailAndPassword(formData)
     }
 
@@ -68,7 +67,7 @@ function PLogin(props: IProps){
                                 onChange={handleChange}
                                 value={values.email}
                             />
-                            {!!errors.email && <p>{errors.email}</p> }
+                            {!!errors.email && <p className='mb-0 text-danger text-sm text-base'>{errors.email}</p> }
                             <input 
                                 type='password'
                                 name='password'
@@ -76,7 +75,7 @@ function PLogin(props: IProps){
                                 onChange={handleChange}
                                 value={values.password}
                             />
-                            {!!errors.password && <p>{errors.password}</p> }
+                            {!!errors.password && <p className='mb-0 text-danger text-sm text-base'>{errors.password}</p> }
                             <button className='button-base text-white text-sm text-uppercase' onClick={()=>handleSubmit()}>Login</button>
                         </div>
                     </Form>

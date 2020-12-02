@@ -4,23 +4,40 @@ import logo from '../../assets/images/logo.png';
 import { FaBars } from 'react-icons/fa';
 import { GlobalContext, IValue } from "../../context/provider";
 import { UserAccount } from '../../@types/servers/auth.types';
+import { logout } from '../../context/auth/actions';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-function Header(){
-    const {authState} = React.useContext(GlobalContext) as IValue;
-    const [ isToggle, setToggle ]= React.useState(false);
+interface IProps extends RouteComponentProps<{}>{};
+
+function Header(props: IProps){
+    const {authDispatch:dispatch ,authState} = React.useContext(GlobalContext) as IValue;
+    const [ isMenuToggle, setMenuToggle ]= React.useState(false);
+    const [ isActionToggle, setActionToggle ]= React.useState(false);
     const [currentUser,setCurrentUser] = React.useState({} as UserAccount);
     const [path, setPath] = React.useState('');
 
     React.useEffect(()=>{
-        setPath(window.location.pathname)
-    },[])
+        setPath(props.location.pathname)
+    },[props.location])
 
     React.useEffect(() => {
-        setCurrentUser(authState.user)
-    },[authState])
+        if(authState.user){
+            setCurrentUser(authState.user)
+        }
+    },[authState, props.history])
 
     const toggleNav =()=>{
-        setToggle(!isToggle);
+        setMenuToggle(!isMenuToggle);
+    }
+
+    const handleToogleAction =()=>{
+        setActionToggle(!isActionToggle);
+    }
+
+    const handleLogout = ()=>{
+        logout()(dispatch);
+        handleToogleAction();
+        props.history.push('/login')
     }
 
     return (
@@ -41,7 +58,7 @@ function Header(){
             <div onBlur={toggleNav} tabIndex={-1} className='nav-mobile ml-auto p-relative'>
                 <div className='navb-toggle' onClick={toggleNav}> <FaBars /></div>
                 {
-                    isToggle && (
+                    isMenuToggle && (
                         <div className='togglenav'>
                             {
                                  navbars.map(navbar=>{
@@ -53,11 +70,14 @@ function Header(){
                 }
             </div>
 
-            {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-column align-items-center">
+             {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-column align-items-center">
                 {currentUser.accountId ? (
-                        <div className='d-flex flex-row current-user align-items-center'> 
-                            <img src={currentUser.avatarUrl || 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt=""/>
-                            <p className="mb-0 text-white">{currentUser.displayName}</p>
+                        <div tabIndex={-1} onBlur={handleToogleAction} className='d-flex flex-row current-user align-items-center p-relative'> 
+                            <img className='pointer' onClick={handleToogleAction} src={currentUser.avatarUrl || 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt=""/>
+                            <p onClick={handleToogleAction} className="mb-0 text-white pointer">{currentUser.displayName}</p>
+                            {isActionToggle && <div className="action">
+                                <p onClick={handleLogout} className="">Log out</p>
+                            </div>}
                         </div>
                     ) : (
                         <a href='/login' className='mb-0'>Sign in</a>
@@ -67,4 +87,4 @@ function Header(){
         </nav>
     )
 }
-export default Header;
+export default withRouter(Header);

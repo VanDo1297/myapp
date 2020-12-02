@@ -4,6 +4,7 @@ import {RouteComponentProps} from 'react-router-dom';
 import { GlobalContext, IValue } from "../../context/provider";
 import {signUpWithEmailAndPassword} from '../../context/auth/actions';
 import {IRegister } from '../../@types/auth.type';
+import {toast} from 'react-toastify';
 
 interface IProps extends RouteComponentProps<{}>{}
 
@@ -17,6 +18,10 @@ function Register(props: IProps){
     },[authState, props.history])
 
     const handleRegisterWithEmailAndPassword=async(data: IRegister)=>{
+        if(data.password !== data.verifypassword){
+            toast.error(`Password doesn't match!`, {position: "top-center"});
+            return;
+        }
         await signUpWithEmailAndPassword(data.email, data.password)(dispath)
     }
     return (

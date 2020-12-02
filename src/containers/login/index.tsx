@@ -16,11 +16,11 @@ function Login(props: IProps){
         }
     },[authState, props.history])
 
-    const handleLoginWithGoogle = async ()=>{
-       await signInWithPopup()(dispath);
+    const handleLoginWithGoogle = ()=>{
+        signInWithPopup()(dispath);
     }
-    const handleLoginWithEmailAndPassword =async(data: ILogin)=>{
-        await signInWithEmailAndPassword(data.email, data.password)(dispath);
+    const handleLoginWithEmailAndPassword =(data: ILogin)=>{
+        signInWithEmailAndPassword(data.email, data.password)(dispath);
     }
 
     return (
