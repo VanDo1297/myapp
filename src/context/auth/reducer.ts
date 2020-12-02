@@ -6,7 +6,7 @@ export const initialState = {
   user: {} as UserAccount,
   token : '',
   loading: false,
-  errorMessage: null
+  errorMessage: ''
 } as IAuth;
 
 export const AuthReducer = (initialState: IAuth, action: any) => {
@@ -26,9 +26,10 @@ export const AuthReducer = (initialState: IAuth, action: any) => {
     case authConts.LOGIN_FAILURE:
       return {
         ...initialState,
+        errorMessage: action.payload,
         user: "",
         token: null,
-        loading: false
+        loading: false,
       };
     case authConts.LOGOUT:
       return {

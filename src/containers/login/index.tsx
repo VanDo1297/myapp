@@ -1,21 +1,28 @@
 import React from 'react';
 import Presentational from './presentational';
 import {RouteComponentProps} from 'react-router-dom';
-import config from '../../config'
-
+import { GlobalContext, IValue } from "../../context/provider";
+import {signInWithPopup, signInWithEmailAndPassword} from '../../context/auth/actions';
+import {ILogin} from '../../@types/auth.type';
 interface IProps extends RouteComponentProps<{}>{}
 
 function Login(props: IProps){
 
-    console.log(props);
-
-    const handleLoginWithGoogle =()=>{
-        const path = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${config.AUTH.APP_CLIENT_ID}&response_type=code&scope=openid email profile&access_type=offline&redirect_uri=${window.location.origin}/login-callback`
-        window.open(path)
+    const {authDispatch:dispath,  authState} = React.useContext(GlobalContext) as IValue;
+    console.log(authState);
+    const handleLoginWithGoogle = async ()=>{
+       await signInWithPopup()(dispath);
+    }
+    const handleLoginWithEmailAndPassword =async(data: ILogin)=>{
+        console.log(data.password);
+        await signInWithEmailAndPassword(data.email, data.password)(dispath);
     }
 
     return (
-        <Presentational handleLoginWithGoogle={handleLoginWithGoogle} />
+        <Presentational 
+            handleLoginWithEmailAndPassword={handleLoginWithEmailAndPassword} 
+            handleLoginWithGoogle={handleLoginWithGoogle} 
+        />
     )
 }
 export default Login;

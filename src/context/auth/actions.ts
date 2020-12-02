@@ -1,35 +1,45 @@
-import jwt from 'jsonwebtoken';
-import { AxiosResponse } from 'axios';
 import {LOGIN_FAILURE, LOGIN_SUCCESS, LOGIN} from '../../constants/auth';
-import { getAccessToken } from '../../services/authService';
-import {AccessTokenResponse, UserAccount} from '../../@types/servers/auth.types'
+import { loginWithGoogle, loginWithEmaillAndPassword } from '../../services/authService';
+import firebase from 'firebase';
 
-export const getAccessTokenActions= (code: string) => async (dispatch: any)=> {
+export const signInWithPopup= () => async (dispatch: any)=> {
     dispatch({
         type: LOGIN,
     });
     try {
-        await getAccessToken(code).then((res: AxiosResponse<AccessTokenResponse>)=>{
-            let userAccount = {} as UserAccount;
-            const u = jwt.decode(res.data.data.id_token) as any;
-            if(u){
-                userAccount = {
-                    accountId: u['sub'],
-                    displayName:u['name'],
-                    emailAddress: u['email'],
-                    avatarUrl: u['picture'],
-                } as UserAccount;
-            }
+        await loginWithGoogle().then((res: firebase.auth.UserCredential) =>{
+            console.log(res);
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: {
-                    user: userAccount,
-                    token : res.data.data.id_token
+                payload:{
+                    user: res.additionalUserInfo &&  res.additionalUserInfo.profile
                 }
-            });
+            })
         })
     } catch (error) {
         dispatch({ type: LOGIN_FAILURE, error: error });
+    }
+}
+
+export const signInWithEmailAndPassword=(email: string, password: string)=>async(dispatch: any)=>{
+    dispatch({
+        type: LOGIN
+    })
+    console.log(email, password);
+    try {
+        await loginWithEmaillAndPassword(email, password).then((res: firebase.auth.UserCredential) =>{
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload:{
+                    user: res.additionalUserInfo &&  res.additionalUserInfo.profile
+                }
+            })
+        })
+    } catch (error) {
+        console.log(error);
+        dispatch({ 
+            type: LOGIN_FAILURE, 
+            payload: error.message });
     }
 }
 

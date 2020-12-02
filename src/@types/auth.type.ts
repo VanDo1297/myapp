@@ -4,10 +4,10 @@ export interface IAuth{
     user: UserAccount,
     token :  string|null,
     loading: boolean,
-    errorMessage: string|null
+    errorMessage: any
 }
 
 export interface ILogin{
-    username: string,
+    email: string,
     password: string
 }
