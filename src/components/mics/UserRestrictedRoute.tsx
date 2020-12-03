@@ -1,14 +1,13 @@
 import React,{useContext} from 'react';
 import { RouteProps, Redirect, Route } from 'react-router-dom'
-import {IValue, GlobalContext} from '../../context/provider';
+import {IAuthValue, GlobalContext} from '../../context/provider';
 type UserRestrictedRouteProps = RouteProps;
 
 const UserRestrictedRoute = (props : UserRestrictedRouteProps) => {
 
-    const {authState} = useContext(GlobalContext) as IValue;
+    const {authState} = useContext(GlobalContext) as IAuthValue;
     let tokenSet =  authState.token;
     let CompType = props.component as React.ComponentClass;
-
     return (
         <Route render={(props) => {
             if (tokenSet) {

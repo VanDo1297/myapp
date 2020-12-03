@@ -1,6 +1,10 @@
 import {auth, provider} from './firebase';
 
 
+export const logoutAuth=()=>{
+    return auth.signOut()
+}
+
 export const loginWithGoogle=()=>{
     return auth.signInWithPopup(provider);
 }

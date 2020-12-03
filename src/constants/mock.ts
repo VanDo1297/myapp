@@ -1,6 +1,6 @@
 import {INavbarItem } from '../@types/navbar.type';
 import {TourItem } from '../@types/tour.type';
-import {BlogItem} from '../@types/blog.type';
+import {IBlogItem} from '../@types/blog.type';
 export const navbars = [
     {
         name:'Home',
@@ -68,25 +68,22 @@ export const tours =[
 
 export const blogs = [
     {
-        id: 1,
         title: 'Lorem Ipsum is simply',
         image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
         own:'Solda Do',
         date:new Date().toISOString(),
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },{
-        id: 2,
         own:'Solda Do',
         date: new Date(new Date()).setDate(new Date(new Date()).getDate() + 1),
         title: 'Lorem Ipsum is simply',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3hdpx0l6MLr-BltdaOS63uIKlcqBazqv-Hg&usqp=CAU',
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     },{
-        id: 3,
         own:'Solda Do',
         date: new Date(new Date()).setDate(new Date(new Date()).getDate() - 5),
         title: 'Lorem Ipsum is simply',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXpwhLSS1eS8Ph3IRDsIceHSiP028lI69L7A&usqp=CAU',
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     }
-] as BlogItem[]
+] as IBlogItem[]

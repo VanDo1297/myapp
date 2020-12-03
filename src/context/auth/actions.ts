@@ -1,13 +1,17 @@
 import * as consAuth from '../../constants/auth';
-import { loginWithGoogle, loginWithEmaillAndPassword, registerWithEmailAndPassword } from '../../services/authService';
+import { loginWithGoogle, loginWithEmaillAndPassword, registerWithEmailAndPassword , logoutAuth} from '../../services/authService';
 import firebase from 'firebase';
 import {mapUser} from '../../helpers';
 
-export const logout =()=> (dispatch: any)=>{
-    if(dispatch){
-        dispatch({
-            type: consAuth.LOGOUT,
+export const logout =()=>async (dispatch: any)=>{
+    try{
+        await logoutAuth().then(res=>{
+            dispatch({
+                type: consAuth.LOGOUT,
+            })
         })
+    }catch(e: any){
+        console.log(e);
     }
 }
 

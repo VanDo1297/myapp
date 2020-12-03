@@ -6,13 +6,15 @@ import Header from './components/header';
 import Login from './containers/login';
 import Register from './containers/register';
 import Landing from './containers/landing';
+import MyBlog from './containers/myblog';
 import { ToastContainer } from 'react-toastify';
 
 import {updateToken} from './context/auth/actions';
-import { GlobalContext, IValue } from "./context/provider";
+import { GlobalContext, IAuthValue } from "./context/provider";
+import UserRestrictedRoute from './components/mics/UserRestrictedRoute';
 function App() {
 
-    const {authDispatch:dispath} = useContext(GlobalContext) as IValue;
+    const {authDispatch:dispath} = useContext(GlobalContext) as IAuthValue;
     const token = localStorage.getItem('token');
     useEffect(()=>{
         persistToken()
@@ -33,7 +35,8 @@ function App() {
                         <Route path="/" exact component={Landing}/>
                         <Route path="/login" exact component={Login}/>
                         <Route path='/register' exact component={Register} />
-                        <Route path='/home' exact component={Landing} />
+                        <UserRestrictedRoute path='/home' exact component={Landing} />
+                        <UserRestrictedRoute path='/my-blog' exact component={MyBlog}/>
                     </Switch>
                 </div>
             </Router>

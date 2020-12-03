@@ -2,7 +2,7 @@ import React from 'react';
 import {navbars} from '../../constants/mock';
 import logo from '../../assets/images/logo.png';
 import { FaBars } from 'react-icons/fa';
-import { GlobalContext, IValue } from "../../context/provider";
+import { GlobalContext, IAuthValue } from "../../context/provider";
 import { UserAccount } from '../../@types/servers/auth.types';
 import { logout } from '../../context/auth/actions';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 interface IProps extends RouteComponentProps<{}>{};
 
 function Header(props: IProps){
-    const {authDispatch:dispatch ,authState} = React.useContext(GlobalContext) as IValue;
+    const {authDispatch:dispatch ,authState} = React.useContext(GlobalContext) as IAuthValue;
     const [ isMenuToggle, setMenuToggle ]= React.useState(false);
     const [ isActionToggle, setActionToggle ]= React.useState(false);
     const [currentUser,setCurrentUser] = React.useState({} as UserAccount);
@@ -37,7 +37,16 @@ function Header(props: IProps){
     const handleLogout = ()=>{
         logout()(dispatch);
         handleToogleAction();
-        props.history.push('/login')
+        props.history.push('/login');
+    }
+
+    const handleMyBlog =()=>{
+        handleToogleAction();
+        props.history.push('/my-blog');
+    }
+
+    const handleHistory =()=>{
+        
     }
 
     return (
@@ -72,11 +81,13 @@ function Header(props: IProps){
 
              {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-column align-items-center">
                 {currentUser.accountId ? (
-                        <div tabIndex={-1} onBlur={handleToogleAction} className='d-flex flex-row current-user align-items-center p-relative'> 
-                            <img className='pointer' onClick={handleToogleAction} src={currentUser.avatarUrl || 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt=""/>
-                            <p onClick={handleToogleAction} className="mb-0 text-white pointer">{currentUser.displayName}</p>
+                        <div tabIndex={-1} onBlur={()=>setActionToggle(false)} className='d-flex flex-row current-user align-items-center p-relative'> 
+                            <img className='pointer' onClick={()=>handleToogleAction()} src={currentUser.avatarUrl || 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt=""/>
+                            <p onClick={()=>handleToogleAction()} className="mb-0 text-white pointer">{currentUser.displayName}</p>
                             {isActionToggle && <div className="action">
-                                <p onClick={handleLogout} className="">Log out</p>
+                                <p onClick={handleMyBlog} className="mb-2">My Blog</p>
+                                <p onClick={handleHistory} className="mb-2">History</p>
+                                <p onClick={handleLogout} className="mb-2">Log out</p>
                             </div>}
                         </div>
                     ) : (

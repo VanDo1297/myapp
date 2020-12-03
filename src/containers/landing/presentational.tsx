@@ -5,11 +5,11 @@ import Footer from '../../components/footer';
 import CategoryTour from './components/categoryTour';
 import CategoryBlog from './components/categoryBlog';
 import { TourItem } from '../../@types/tour.type';
-import { BlogItem } from '../../@types/blog.type';
+import { IBlogItem } from '../../@types/blog.type';
 
 interface IProps{
     tours: TourItem[],
-    blogs: BlogItem[]
+    blogs: IBlogItem[]
 }
 function PLanding(props: IProps){
     return (

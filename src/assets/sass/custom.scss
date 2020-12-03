@@ -154,9 +154,16 @@
     }
 }
 
+.line-clamp-5{
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
+
 .col-sm-12{
     padding: unset !important;
 }
+
 
 @media screen and (max-width:990px){
     

@@ -1,0 +1,7 @@
+export const ADD_BLOG = 'ADD_BLOG'
+export const ADD_BLOG_FAILURE= 'ADD_BLOG_FAILURE'
+export const ADD_BLOG_SUCCESS = 'ADD_BLOG_SUCCESS'
+
+export const GET_BLOG = 'GET_BLOG'
+export const GET_BLOG_FAILURE= 'GET_BLOG_FAILURE'
+export const GET_BLOG_SUCCESS = 'GET_BLOG_SUCCESS'
