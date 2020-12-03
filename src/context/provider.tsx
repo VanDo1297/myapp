@@ -30,6 +30,8 @@ export interface IBlogValue{
     blogDispatch : any
 }
 
+export type IState = IAuthValue & IBlogValue
+
 export const GlobalProvider =({children}: any)=>{
     const [authState, authDispatch]= useReducer(AuthReducer, initialState);
     const [blogState, blogDispatch]= useReducer(BlogReducer, initialBlogState);

@@ -1,6 +1,7 @@
 import React from 'react';
 import {IBlogItem} from '../../@types/blog.type';
 import moment from 'moment';
+import {PushpinOutlined} from '@ant-design/icons';
 
 interface IProps {
     blog: IBlogItem,
@@ -12,6 +13,7 @@ const BlogItem = React.memo((props: IProps)=>{
         <div key={index} className='col-12 col-md-6 blog-item' data-aos="fade-up" data-aos-duration='1500'>
             <div className="b-image">
                 <img src={blog.image} alt=""/>
+                <PushpinOutlined />
             </div>
             <div className="b-contact">
                 <p className='mb-0 b-name'>{blog.title}</p>
@@ -21,5 +23,4 @@ const BlogItem = React.memo((props: IProps)=>{
         </div>
     )
 })
-
 export default BlogItem;

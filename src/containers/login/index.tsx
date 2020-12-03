@@ -11,7 +11,7 @@ function Login(props: IProps){
     const {authDispatch:dispath,  authState} = useContext(GlobalContext) as IAuthValue;
 
     useEffect(()=>{
-        if(authState.user && authState.user.accountId){
+        if(authState.token){
             props.history.push('/home')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

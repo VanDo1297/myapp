@@ -7,6 +7,7 @@ import CategoryBlog from './components/categoryBlog';
 import { TourItem } from '../../@types/tour.type';
 import { IBlogItem } from '../../@types/blog.type';
 
+
 interface IProps{
     tours: TourItem[],
     blogs: IBlogItem[]

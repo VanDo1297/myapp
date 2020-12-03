@@ -8,13 +8,13 @@ export const addBlog=(userId: string, blogs: IBlogItem, file: File)=>(dispatch: 
     })
     try {
         addMyBlog(userId, blogs, file).then(res=>{
+            getBlog(userId)(dispatch)
             dispatch({
                 type: consBlog.ADD_BLOG_SUCCESS,
                 payload: {
                     blogs: res
                 }
             })
-            getBlog(userId)
         })
     } catch (error) {
         dispatch({ type: consBlog.ADD_BLOG_FAILURE, error: error.message });
@@ -29,7 +29,6 @@ export const getBlog =(userId: string)=>async (dispatch: any)=>{
         let blogs = [] as any[];
         await getMyBlog(userId).then(querySnapshot=>{
             querySnapshot.forEach(doc=>{
-                console.log(doc.data());
                 blogs.push(doc.data())
             })
         })

@@ -11,7 +11,6 @@ export const logout =()=>async (dispatch: any)=>{
             })
         })
     }catch(e: any){
-        console.log(e);
     }
 }
 

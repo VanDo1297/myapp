@@ -5,14 +5,17 @@ interface IProps {
 }
 const Loading = React.memo((props: IProps)=>{
     return (
-        <div className='loading'>
-            { props.isShowLoading && <div className='d-flex flex-column align-items-center'>
-                <div className="lds-default">
-                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-                </div> 
-                <p className="text-md text-bold text-white">Loading ...</p> 
-            </div>}
-        </div>
+        <>
+            { props.isShowLoading && <div className='loading'>
+                <div className='d-flex flex-column align-items-center'>
+                    <div className="lds-default">
+                        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                    </div> 
+                    <p className="text-md text-bold text-white">Loading ...</p> 
+                </div>
+            </div>
+}   
+        </>
     )
 });
 
