@@ -1,0 +1,11 @@
+export const ADD_TOUR = 'ADD_TOUR'
+export const ADD_TOUR_FAILURE= 'ADD_TOUR_FAILURE'
+export const ADD_TOUR_SUCCESS = 'ADD_TOUR_SUCCESS'
+
+export const GET_TOUR = 'GET_TOUR'
+export const GET_TOUR_FAILURE= 'GET_TOUR_FAILURE'
+export const GET_TOUR_SUCCESS = 'GET_TOUR_SUCCESS'
+
+export const GET_TOUR_ID = 'GET_TOUR_ID'
+export const GET_TOUR_ID_FAILURE= 'GET_TOUR_ID_FAILURE'
+export const GET_TOUR_ID_SUCCESS = 'GET_TOUR_ID_SUCCESS'
