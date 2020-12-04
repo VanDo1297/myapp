@@ -127,6 +127,7 @@
     .category-title{
         position: relative;
         margin-bottom: 50px;
+        margin-top: 50px;
         &:after{
             content: 'Category';
             font-family: sans-serif;
@@ -145,8 +146,28 @@
     .blog-title{
         position: relative;
         margin-bottom: 50px;
+        margin-top: 50px;
         &:after{
             content: 'Blog';
+            font-family: sans-serif;
+            position: absolute;
+            top:-35px;
+            left: 0px;
+            opacity: 0.2;
+            font-weight:bolder;
+            font-size: 64px;
+        }
+        .name{
+           @include name;
+        }
+    }
+
+    .hot-title{
+        position: relative;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        &:after{
+            content: 'Hot tour';
             font-family: sans-serif;
             position: absolute;
             top:-35px;

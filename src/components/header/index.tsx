@@ -37,12 +37,20 @@ function Header(props: IProps){
     const handleLogout = ()=>{
         logout()(dispatch);
         handleToogleAction();
+        toggleNav();
         props.history.push('/login');
     }
 
     const handleMyBlog =()=>{
         handleToogleAction();
+        toggleNav();
         props.history.push('/my-blog');
+    }
+
+    const handleMyTour =()=>{
+        handleToogleAction();
+        toggleNav();
+        props.history.push('/my-tour');
     }
 
     const handleHistory =()=>{
@@ -50,52 +58,62 @@ function Header(props: IProps){
     }
 
     return (
-        <nav className="header d-flex flex-row w-100">
-            <img style={{width:'50px'}} src={logo} alt=''/>
-            <ul className="nav-des">
-                {
-                    navbars.map(navbar=>{
-                        return (
-                            <li key={navbar.name} className="nav-item active">
-                                <a className="nav-link" href={navbar.path}>{navbar.name}</a>
-                                <div className='nav-line' />
-                            </li>
+        <div className='header'>
+            <div className="nav-des flex-row w-100">
+                <img onClick={()=>props.history.push('/')} style={{width:'50px'}} src={logo} alt=''/>
+                <ul className="d-flex flex-row">
+                    {
+                        navbars.map(navbar=>{
+                            return (
+                                <li key={navbar.name} className="nav-item active">
+                                    <a className="nav-link" href={navbar.path}>{navbar.name}</a>
+                                    <div className='nav-line' />
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+                {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-column align-items-center">
+                    {currentUser.accountId ? (
+                            <div tabIndex={-1} onBlur={()=>setActionToggle(false)} className='d-flex flex-row current-user align-items-center p-relative'> 
+                                <img className='pointer' onClick={()=>handleToogleAction()} src={currentUser.avatarUrl || 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt=""/>
+                                <p onClick={()=>handleToogleAction()} className="mb-0 text-white pointer">{currentUser.displayName}</p>
+                                {isActionToggle && <div className="action">
+                                    <p onClick={handleMyTour} className="mb-2">My Tour</p>
+                                    <p onClick={handleMyBlog} className="mb-2">My Blog</p>
+                                    <p onClick={handleHistory} className="mb-2">History</p>
+                                    <p onClick={handleLogout} className="mb-2">Log out</p>
+                                </div>}
+                            </div>
+                        ) : (
+                            <a href='/login' className='mb-0'>Sign in</a>
                         )
-                    })
-                }
-            </ul>
+                    }
+                </div>}
+            </div>
             <div onBlur={toggleNav} tabIndex={-1} className='nav-mobile ml-auto p-relative'>
+                <img onClick={()=>props.history.push('/')} style={{width:'50px'}} src={logo} alt=''/>
                 <div className='navb-toggle' onClick={toggleNav}> <FaBars /></div>
                 {
                     isMenuToggle && (
                         <div className='togglenav'>
                             {
-                                 navbars.map(navbar=>{
-                                     return  <a key={navbar.name} className="nav-link" href={navbar.path}>{navbar.name}</a>
-                                 })
+                                navbars.map(navbar=>{
+                                    return  <a key={navbar.name} className="nav-link" href={navbar.path}>{navbar.name}</a>
+                                })
                             }
+
+                            <div className="nav-mobile-control">
+                                <button onClick={handleMyTour}>My Tour</button>
+                                <button onClick={handleMyBlog} >My Blog</button>
+                                <button onClick={handleHistory}>History</button>
+                                <button onClick={handleLogout}>Log out</button>
+                            </div>
                         </div>
                     )
                 }
             </div>
-
-             {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-column align-items-center">
-                {currentUser.accountId ? (
-                        <div tabIndex={-1} onBlur={()=>setActionToggle(false)} className='d-flex flex-row current-user align-items-center p-relative'> 
-                            <img className='pointer' onClick={()=>handleToogleAction()} src={currentUser.avatarUrl || 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt=""/>
-                            <p onClick={()=>handleToogleAction()} className="mb-0 text-white pointer">{currentUser.displayName}</p>
-                            {isActionToggle && <div className="action">
-                                <p onClick={handleMyBlog} className="mb-2">My Blog</p>
-                                <p onClick={handleHistory} className="mb-2">History</p>
-                                <p onClick={handleLogout} className="mb-2">Log out</p>
-                            </div>}
-                        </div>
-                    ) : (
-                        <a href='/login' className='mb-0'>Sign in</a>
-                    )
-                }
-            </div>}
-        </nav>
+        </div>
     )
 }
 export default withRouter(Header);
