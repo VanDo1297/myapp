@@ -5,10 +5,13 @@ import AddModal from '../../components/modal/addtour';
 import {ITourItem} from '../../@types/tour.type';
 import {PlusCircleOutlined} from '@ant-design/icons';
 import Loading from '../../components/loading';
+import {RouteComponentProps} from 'react-router-dom';
 
 const TourItem = React.lazy(()=> import('../../components/tour/tourItem'));
 
-const MyTour = (props: any)=>{
+type IProps = RouteComponentProps;
+
+const MyTour = (props: IProps)=>{
 
     const {tourDispatch:dispatch,  tourState, authState} = useContext(GlobalContext) as IState;
     const [tours, setTours]= useState([] as ITourItem[])
@@ -37,6 +40,10 @@ const MyTour = (props: any)=>{
         setShowAddModal(false);
     }
 
+    const goTo =(tourId:string)=>{
+        props.history.push(`/tour/details?id=${tourId}`)
+    }
+
     return (
         <>
             <div className="myblog">
@@ -47,7 +54,7 @@ const MyTour = (props: any)=>{
                     {
                         tours && tours.length>0 &&  tours.map((tour: ITourItem, index: number) =>{
                             return <Suspense fallback={<div>Loading...</div>}>
-                                    <TourItem tour={tour} index={index}/>
+                                    <TourItem goTo={goTo} tour={tour} index={index}/>
                                 </Suspense>
                         })
                     }

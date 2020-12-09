@@ -2,19 +2,21 @@ import React from 'react';
 import {navbars} from '../../constants/mock';
 import logo from '../../assets/images/logo.png';
 import { FaBars } from 'react-icons/fa';
-import { GlobalContext, IAuthValue } from "../../context/provider";
+import { GlobalContext, IState } from "../../context/provider";
 import { UserAccount } from '../../@types/servers/auth.types';
 import { logout } from '../../context/auth/actions';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import ShopIcon from '../shopIcon';
 
 interface IProps extends RouteComponentProps<{}>{};
 
 function Header(props: IProps){
-    const {authDispatch:dispatch ,authState} = React.useContext(GlobalContext) as IAuthValue;
+    const {authDispatch:dispatch ,authState, tourState} = React.useContext(GlobalContext) as IState;
     const [ isMenuToggle, setMenuToggle ]= React.useState(false);
     const [ isActionToggle, setActionToggle ]= React.useState(false);
     const [currentUser,setCurrentUser] = React.useState({} as UserAccount);
     const [path, setPath] = React.useState('');
+    const [bookingCount, setBookingCout] = React.useState(0);
 
     React.useEffect(()=>{
         setPath(props.location.pathname)
@@ -25,6 +27,13 @@ function Header(props: IProps){
             setCurrentUser(authState.user)
         }
     },[authState, props.history])
+
+    React.useEffect(()=>{
+        if(tourState.tourBooking){
+            console.log(tourState.tourBooking);
+            setBookingCout(tourState.tourBooking.length);
+        }
+    },[tourState.tourBooking])
 
     const toggleNav =()=>{
         setMenuToggle(!isMenuToggle);
@@ -60,6 +69,7 @@ function Header(props: IProps){
     return (
         <div className='header'>
             <div className="nav-des flex-row w-100">
+                
                 <img onClick={()=>props.history.push('/')} style={{width:'50px'}} src={logo} alt=''/>
                 <ul className="d-flex flex-row">
                     {
@@ -73,7 +83,8 @@ function Header(props: IProps){
                         })
                     }
                 </ul>
-                {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-column align-items-center">
+                {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-row align-items-center">
+                    <ShopIcon count={bookingCount} />
                     {currentUser.accountId ? (
                             <div tabIndex={-1} onBlur={()=>setActionToggle(false)} className='d-flex flex-row current-user align-items-center p-relative'> 
                                 <img className='pointer' onClick={()=>handleToogleAction()} src={currentUser.avatarUrl || 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt=""/>
@@ -91,12 +102,12 @@ function Header(props: IProps){
                     }
                 </div>}
             </div>
-            <div onBlur={toggleNav} tabIndex={-1} className='nav-mobile ml-auto p-relative'>
+            <div  onBlur={toggleNav} tabIndex={-1} className='nav-mobile ml-auto p-relative'>
                 <img onClick={()=>props.history.push('/')} style={{width:'50px'}} src={logo} alt=''/>
-                <div className='navb-toggle' onClick={toggleNav}> <FaBars /></div>
+                <div  className='navb-toggle' onClick={toggleNav}> <FaBars /></div>
                 {
                     isMenuToggle && (
-                        <div className='togglenav'>
+                        <div  data-aos="fade-left" className='togglenav'>
                             {
                                 navbars.map(navbar=>{
                                     return  <a key={navbar.name} className="nav-link" href={navbar.path}>{navbar.name}</a>
@@ -104,10 +115,14 @@ function Header(props: IProps){
                             }
 
                             <div className="nav-mobile-control">
-                                <button onClick={handleMyTour}>My Tour</button>
-                                <button onClick={handleMyBlog} >My Blog</button>
-                                <button onClick={handleHistory}>History</button>
-                                <button onClick={handleLogout}>Log out</button>
+                                <div className="d-flex flex-row w-100">
+                                    <button onClick={handleMyTour}>My Tour</button>
+                                    <button  onClick={handleMyBlog} >My Blog</button>
+                                </div>
+                                <div className="d-flex flex-row w-100">
+                                    <button  onClick={handleHistory}>History</button>
+                                    <button onClick={handleLogout}>Log out</button>
+                                </div>
                             </div>
                         </div>
                     )
