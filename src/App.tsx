@@ -7,6 +7,8 @@ import Login from './containers/login';
 import Register from './containers/register';
 import Landing from './containers/landing';
 import MyBlog from './containers/myblog';
+import MyTour from './containers/tour/mytour';
+import TourDetail from './containers/tour/details'
 import { ToastContainer } from 'react-toastify';
 
 import {updateToken} from './context/auth/actions';
@@ -37,6 +39,8 @@ function App() {
                         <Route path='/register' exact component={Register} />
                         <UserRestrictedRoute path='/home' exact component={Landing} />
                         <UserRestrictedRoute path='/my-blog' exact component={MyBlog}/>
+                        <UserRestrictedRoute path='/my-tour' exact component={MyTour}/>
+                        <UserRestrictedRoute path='/tour/details' exact component={TourDetail} />
                     </Switch>
                 </div>
             </Router>

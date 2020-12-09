@@ -4,13 +4,15 @@ import Box from '../../components/box';
 import Footer from '../../components/footer';
 import CategoryTour from './components/categoryTour';
 import CategoryBlog from './components/categoryBlog';
-import { TourItem } from '../../@types/tour.type';
+import HotTour from './components/hot';
+import { ITourItem } from '../../@types/tour.type';
 import { IBlogItem } from '../../@types/blog.type';
 
 
 interface IProps{
-    tours: TourItem[],
-    blogs: IBlogItem[]
+    tours: ITourItem[],
+    blogs: IBlogItem[],
+    handleClickTourItem:(id:string)=>void;
 }
 function PLanding(props: IProps){
     return (
@@ -28,11 +30,15 @@ function PLanding(props: IProps){
                                 classname='flex-row-reverse'
                             />
                             <CategoryTour 
-                                tours={props.tours}
+                                tours={props.tours.slice(0,6)}
                             />
+
+                            <HotTour tours={props.tours.slice(0,6)} handleClickTourItem={props.handleClickTourItem}/>
                             <CategoryBlog 
                                 blogs={props.blogs}
                             />
+
+                            
                             
                         </div>
                     </div>

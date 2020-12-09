@@ -1,0 +1,105 @@
+.tour-detail{
+    padding-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    .tour-image{
+        display: flex;
+        justify-content: center;
+        >img{
+            width: 100%;
+            height: 100%;
+            max-width: 1440px;
+            max-height: 600px;
+        }
+    }
+
+    .tourName{
+        margin-bottom: 0;
+        margin-top: 20px;
+        font-size: 42px;
+        font-weight: bold;
+    }
+
+    .location{
+        .location-d{
+            font-size: 18px;
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+        .location-c{
+            margin-top: 5px;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+    }
+
+    .description{
+        .description-d{
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        .description-c{
+            margin-top: 5px;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+    }
+
+    .prince{
+        display: flex;
+        flex: row;
+        margin-top: 20px;
+        .prince-d{
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        .prince-c{
+            margin-left: 20px;
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+    }
+
+    .duration{
+        margin-top: 20px;
+        display: flex;
+        flex: row;
+        .duration-d{
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        .duration-c{
+            margin-left: 20px;
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+    }
+    .tour-button{
+        display: flex;
+        // justify-content: center;
+        .tour-booking{
+            margin: 30px;
+            height: 50px;
+            width: 100%;
+            max-width: 250px;
+            border-radius: 7px;
+            border: unset;
+            background-color: wheat;
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .tour-detail{
+        .tour-button{
+            justify-content: center;
+        }
+    }
+}
