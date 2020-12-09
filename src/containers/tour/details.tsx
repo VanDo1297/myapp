@@ -16,7 +16,6 @@ const TourDetails =(props: IProps)=>{
 
     useEffect(()=>{
         const parsed = queryString.parse(props.location.search);
-        console.log(parsed);
         if(parsed.type  && parsed.type === 'public'){
             getTourDetails(parsed.id )(dispatch)
         }else{
@@ -27,6 +26,7 @@ const TourDetails =(props: IProps)=>{
 
     useEffect(()=>{
         setDetail(tourState.tourDetail)
+      
     },[tourState.tourDetail])
 
     useEffect(()=>{

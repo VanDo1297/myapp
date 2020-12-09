@@ -2,7 +2,6 @@ import {firestore, storage} from './firebase';
 import {ITourItem} from '../@types/tour.type';
 
 export const addTour= async (tour: ITourItem, file: File)=>{
-    console.log('ping');
     var storageRef = storage.ref();
     const fileRef = storageRef.child(file.name);
     await fileRef.put(file);

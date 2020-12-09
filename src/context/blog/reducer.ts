@@ -4,7 +4,6 @@ export const BlogReducer = (initialState:IBlog, action: any) => {
   switch (action.type) {
     case blogConts.ADD_BLOG:
     case blogConts.GET_BLOG:
-      console.log('ping1');
       return {
         ...initialState,
         loading: true
@@ -12,7 +11,6 @@ export const BlogReducer = (initialState:IBlog, action: any) => {
 
     case blogConts.ADD_BLOG_FAILURE:
     case blogConts.GET_BLOG_FAILURE:
-      console.log('ping2');
       return {
         ...initialState,
         loading: false,
@@ -24,7 +22,6 @@ export const BlogReducer = (initialState:IBlog, action: any) => {
         loading: false,
       }
     case blogConts.GET_BLOG_SUCCESS:
-      console.log('ping3');
       return {
         ...initialState,
         loading: false,

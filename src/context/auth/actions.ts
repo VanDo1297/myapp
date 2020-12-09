@@ -54,9 +54,10 @@ export const signInWithEmailAndPassword=(email: string, password: string)=>(disp
                     user: mapUser(res.user as firebase.User),
                 }
             })
-            updateToken(res.credential && res.credential.idToken)(dispatch)
+            updateToken(res.user.uid)(dispatch)
         })
     } catch (error) {
+        console.log(error);
         dispatch({ 
             type: consAuth.LOGIN_FAILURE, 
             payload: error.message });

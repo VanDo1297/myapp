@@ -14,14 +14,11 @@ export const mapUser=(user:firebase.User): UserAccount=>{
 }
 
 export const getDaysBetweenDates = (startDate: string, endDate: string) => {
-    console.log(startDate);
-    console.log(endDate);
     const now = moment.utc(startDate);
     const dates = [];
     while (now.isSameOrBefore(moment.utc(endDate))){
       dates.push(now.format('YYYY-MM-DD'));
       now.add(1, 'days');
     }
-    console.log(dates);
     return dates;
 };

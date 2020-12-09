@@ -30,7 +30,6 @@ function Header(props: IProps){
 
     React.useEffect(()=>{
         if(tourState.tourBooking){
-            console.log(tourState.tourBooking);
             setBookingCout(tourState.tourBooking.length);
         }
     },[tourState.tourBooking])

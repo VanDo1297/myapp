@@ -22,14 +22,15 @@ export const addNewTour=(userId: string, tour: ITourItem, file: File)=>(dispatch
 }
 
 export const getTour =()=>async (dispatch: any)=>{
+   
     dispatch({
         type: consTour.GET_TOUR
     })
     try {
+      
         let tours = [] as any[];
         await getTours().then(querySnapshot=>{
             querySnapshot.forEach(doc=>{
-                console.log(doc);
                 tours.push(doc.data())
             })
         })
@@ -74,7 +75,6 @@ export const getMyTourDetails =(userId: string, tourId:string)=>async (dispatch:
         let tour = {};
         await getMyTourDetail(userId, tourId).then(querySnapshot=>{
             querySnapshot.forEach(doc=>{
-                console.log(doc.data());
                 tour = doc.data()
             })
         })
