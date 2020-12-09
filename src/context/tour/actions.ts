@@ -1,6 +1,6 @@
 import * as consTour from '../../constants/tour';
 import { addTour, getTours, getTourWithId } from '../../services/tourService';
-import {ITour, ITourItem} from '../../@types/tour.type';
+import { ITourItem} from '../../@types/tour.type';
 
 export const addNewTour=(userId: string, tour: ITourItem, file: File)=>(dispatch: any)=>{
     dispatch({
