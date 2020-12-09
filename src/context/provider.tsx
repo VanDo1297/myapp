@@ -29,6 +29,7 @@ export const initialBlogState = {
 
 export const initialTourState = {
     tours : [] as ITourItem[],
+    tourBooking:[] as ITourItem[],
     loading: false,
     errorMessage: '',
     tourDetail: {} as ITourItem

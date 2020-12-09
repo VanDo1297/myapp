@@ -1,0 +1,35 @@
+.shop-icon{
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    .shop-icon__bg{
+        position: absolute;
+        background-color: red;
+        border-radius: 100%;
+        width: 20px;
+        height: 20px;
+        top: -7px;
+        right: -7px;
+        z-index: 2;
+    }
+    svg{
+        width: 30px;
+        height: 30px;
+    }
+    .shop-icon__count{
+        position: absolute;
+        z-index: 3;
+        width: 20px;
+        height: 20px;
+        top: -7px;
+        right: -7px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+    }
+}

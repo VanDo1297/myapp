@@ -9,3 +9,6 @@ export const GET_TOUR_SUCCESS = 'GET_TOUR_SUCCESS'
 export const GET_TOUR_ID = 'GET_TOUR_ID'
 export const GET_TOUR_ID_FAILURE= 'GET_TOUR_ID_FAILURE'
 export const GET_TOUR_ID_SUCCESS = 'GET_TOUR_ID_SUCCESS'
+
+
+export const BOOKING_TOUR = 'BOOKING_TOUR'

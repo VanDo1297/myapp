@@ -18,6 +18,7 @@ export interface ITourItem{
 
 export interface ITour{
     tours: ITourItem[],
+    tourBooking: ITourItem[],
     loading: boolean,
     errorMessage: any,
     tourDetail: ITourItem

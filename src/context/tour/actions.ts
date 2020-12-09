@@ -1,6 +1,6 @@
 import * as consTour from '../../constants/tour';
 import { addTour, getTours, getTourWithId } from '../../services/tourService';
-import {ITourItem} from '../../@types/tour.type';
+import { ITourItem} from '../../@types/tour.type';
 
 export const addNewTour=(userId: string, tour: ITourItem, file: File)=>(dispatch: any)=>{
     dispatch({
@@ -63,4 +63,14 @@ export const getTourDetails =(userId: string, tourId:string)=>async (dispatch: a
     } catch (error) {
         dispatch({ type: consTour.GET_TOUR_FAILURE, error: error.message });
     }
+}
+
+export const bookTour = (tour: ITourItem)=>(dispatch: any)=>{
+    // TODO
+    dispatch({
+        type: consTour.BOOKING_TOUR,
+        payload: {
+            tour:tour
+        }
+    })
 }
