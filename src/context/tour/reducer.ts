@@ -5,22 +5,38 @@ import {initialTourState} from '../provider'
 export const TourReducer = (initialState:ITour = initialTourState , action: any) => {
     switch (action.type) {
         case consTour.ADD_TOUR:
+        case consTour.GET_MY_TOUR:
+        case consTour.GET_TOUR_DETAIL:
         case consTour.GET_TOUR:
-        case consTour.GET_TOUR_ID:
+        case consTour.GET_MY_TOUR_DETAIL:
             return {
                 ...initialState,
                 loading: true
             }
-
-        case consTour.ADD_TOUR_FAILURE:
         case consTour.GET_TOUR_FAILURE:
-        case consTour.GET_TOUR_ID_FAILURE:    
+        case consTour.ADD_TOUR_FAILURE:
+        case consTour.GET_MY_TOUR_FAILURE:
+        case consTour.GET_TOUR_DETAIL_FAILURE:    
+        case consTour.GET_MY_TOUR_DETAIL_FAILURE:
             return {
                 ...initialState,
                 loading: false,
                 errorMessage: action.error
             }
-        case consTour.GET_TOUR_ID_SUCCESS:
+        case consTour.GET_MY_TOUR_DETAIL_SUCCESS:
+            return{
+                ...initialState,
+                loading:false,
+                myTourDetail: action.payload.tourDetail
+            }
+
+        case consTour.GET_TOUR_SUCCESS:
+            return {
+                ...initialState,
+                loading: false,
+                tours: action.payload.tours
+            }
+        case consTour.GET_TOUR_DETAIL_SUCCESS:
             return{
                 ...initialState,
                 loading: false,
@@ -31,11 +47,11 @@ export const TourReducer = (initialState:ITour = initialTourState , action: any)
                 ...initialState,
                 loading: false,
             }
-        case consTour.GET_TOUR_SUCCESS:
+        case consTour.GET_MY_TOUR_SUCCESS:
             return {
                 ...initialState,
                 loading: false,
-                tours: action.payload.tours
+                mytours: action.payload.tours
             }
         
         case consTour.BOOKING_TOUR:

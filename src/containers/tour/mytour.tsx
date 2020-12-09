@@ -1,6 +1,6 @@
 import React,{useContext, useEffect, useState ,Suspense} from 'react';
 import { GlobalContext, IState} from '../../context/provider';
-import {addNewTour, getTour} from '../../context/tour/actions';
+import {addNewTour, getMyTour} from '../../context/tour/actions';
 import AddModal from '../../components/modal/addtour';
 import {ITourItem} from '../../@types/tour.type';
 import {PlusCircleOutlined} from '@ant-design/icons';
@@ -19,13 +19,13 @@ const MyTour = (props: IProps)=>{
     const [isLoading, setLoading]= useState(false);
 
     useEffect(()=>{
-        getTour(authState.user.accountId)(dispatch);
+        getMyTour(authState.user.accountId)(dispatch);
          // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(()=>{
-        setTours(tourState.tours);
-    },[tourState.tours])
+        setTours(tourState.mytours);
+    },[tourState.mytours])
 
     useEffect(()=>{
         setLoading(tourState.loading)

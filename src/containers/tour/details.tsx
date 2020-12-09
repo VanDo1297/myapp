@@ -1,6 +1,6 @@
 import React,{useContext, useEffect, useState} from 'react';
 import { GlobalContext, IState} from '../../context/provider';
-import { getTourDetails, bookTour } from '../../context/tour/actions';
+import { getTourDetails, getMyTourDetails , bookTour } from '../../context/tour/actions';
 import {RouteComponentProps} from 'react-router-dom';
 import { ITourItem } from '../../@types/tour.type';
 import {getDaysBetweenDates} from '../../helpers';
@@ -16,13 +16,22 @@ const TourDetails =(props: IProps)=>{
 
     useEffect(()=>{
         const parsed = queryString.parse(props.location.search);
-        getTourDetails(authState.user.accountId,parsed.id )(dispatch)
+        console.log(parsed);
+        if(parsed.type  && parsed.type === 'public'){
+            getTourDetails(parsed.id )(dispatch)
+        }else{
+            getMyTourDetails(authState.user && authState.user.accountId ,parsed.id )(dispatch)
+        }
          // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(()=>{
         setDetail(tourState.tourDetail)
     },[tourState.tourDetail])
+
+    useEffect(()=>{
+        setDetail(tourState.myTourDetail)
+    },[tourState.myTourDetail])
 
     useEffect(()=>{
         setLoading(tourState.loading)
@@ -57,7 +66,7 @@ const TourDetails =(props: IProps)=>{
 
                     <div className="duration">
                         <p className="duration-d">Duration: </p>
-                        <p className="duration-c">{getDaysBetweenDates(tourState.tourDetail.startDate, tourState.tourDetail.endDate).length - 1} days - {getDaysBetweenDates(tourState.tourDetail.startDate, tourState.tourDetail.endDate).length - 2} nights</p>
+                        <p className="duration-c">{getDaysBetweenDates(detail.startDate, detail.endDate).length -1} days - {getDaysBetweenDates(detail.startDate, detail.endDate).length - 2} nights</p>
                     </div>
                     <div className="tour-button">
                         <button onClick={handleBooking} className='tour-booking'>Booking now</button>

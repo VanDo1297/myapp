@@ -1,12 +1,18 @@
 import React from 'react';
 import { ITourItem } from '../../../../@types/tour.type';
 interface IProps{
-    tours: ITourItem[]
+    tours: ITourItem[],
+    handleClickTourItem:(id: string)=> void;
 }
 const CategoryTour = React.memo((props:IProps)=>{
+
+    const handleClickTourItem =(id: string)=>{
+        props.handleClickTourItem(id)
+    }
+
     const renderTourItem =(tour: ITourItem)=>{
         return (
-            <div key={tour.startDate} className='col-lg-4 col-md-6 col-sm-12 tour-item' data-aos="fade-up" data-aos-duration='1500'>
+            <div onClick={()=>handleClickTourItem(tour.id.toString())} key={tour.startDate} className='col-lg-4 col-md-6 col-sm-12 tour-item' data-aos="fade-up" data-aos-duration='1500'>
                 <img src={tour.image} alt=""/>
                 <div className="content">
                     <p className="mb-0 tour-price pointer">
@@ -29,6 +35,7 @@ const CategoryTour = React.memo((props:IProps)=>{
                     props.tours.map(tour => renderTourItem(tour))
                 }
             </div>
+            <p className='text-base text-sm text-dark-blue'>View More...</p>
         </div>
     )
 })

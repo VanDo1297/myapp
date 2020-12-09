@@ -35,6 +35,7 @@ const HotTour = React.memo((props:IProps)=>{
                     props.tours.map(tour => renderTourItem(tour))
                 }
             </div>
+            <p className='text-base text-sm text-dark-blue'>View More...</p>
         </div>
     )
 })

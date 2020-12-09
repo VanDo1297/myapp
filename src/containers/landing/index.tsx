@@ -16,7 +16,7 @@ function Landing(props: IProps){
     const [tours, setTours]= useState([] as ITourItem[])
 
     useEffect(()=>{
-        getTour(authState.user && authState.user.accountId)(tourDispatch)
+        getTour()(tourDispatch)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
@@ -29,7 +29,7 @@ function Landing(props: IProps){
     },[tourState.tours])
 
     const handleClickTourItem =(id: string)=>{
-        props.history.push(`/tour/details?id=${id}`)
+        props.history.push(`/tour/details?id=${id}&type=public`)
     }
 
     return (

@@ -31,15 +31,16 @@ function PLanding(props: IProps){
                             />
                             <CategoryTour 
                                 tours={props.tours.slice(0,6)}
+                                handleClickTourItem={props.handleClickTourItem}
                             />
 
-                            <HotTour tours={props.tours.slice(0,6)} handleClickTourItem={props.handleClickTourItem}/>
+                            <HotTour 
+                                tours={props.tours.slice(props.tours.length - 6, props.tours.length).reverse()} 
+                                handleClickTourItem={props.handleClickTourItem}
+                            />
                             <CategoryBlog 
                                 blogs={props.blogs}
                             />
-
-                            
-                            
                         </div>
                     </div>
                 </div>
