@@ -1,7 +1,8 @@
 import * as consTour from '../../constants/tour';
 import {ITour} from '../../@types/tour.type';
+import {initialTourState} from '../provider'
 
-export const TourReducer = (initialState:ITour , action: any) => {
+export const TourReducer = (initialState:ITour = initialTourState , action: any) => {
     switch (action.type) {
         case consTour.ADD_TOUR:
         case consTour.GET_TOUR:

@@ -16,7 +16,7 @@ function Landing(props: IProps){
     const [tours, setTours]= useState([] as ITourItem[])
 
     useEffect(()=>{
-        getTour(authState.user.accountId)(tourDispatch)
+        getTour(authState.user && authState.user.accountId)(tourDispatch)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
