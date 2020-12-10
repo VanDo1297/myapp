@@ -3,8 +3,10 @@ import { ITourItem } from '../../../../@types/tour.type';
 interface IProps{
     tours: ITourItem[],
     handleClickTourItem:(id: string)=> void;
+    handleViewMoreTour:()=>void;
 }
 const CategoryTour = React.memo((props:IProps)=>{
+
 
     const handleClickTourItem =(id: string)=>{
         props.handleClickTourItem(id)
@@ -35,7 +37,7 @@ const CategoryTour = React.memo((props:IProps)=>{
                     props.tours.map(tour => renderTourItem(tour))
                 }
             </div>
-            <p className='text-base text-sm text-dark-blue'>View More...</p>
+            <p onClick={props.handleViewMoreTour} className='text-base text-sm text-dark-blue pointer'>View More...</p>
         </div>
     )
 })

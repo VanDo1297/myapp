@@ -13,6 +13,7 @@ interface IProps{
     tours: ITourItem[],
     blogs: IBlogItem[],
     handleClickTourItem:(id:string)=>void;
+    handleViewMoreTour:()=>void;
 }
 function PLanding(props: IProps){
     return (
@@ -32,6 +33,7 @@ function PLanding(props: IProps){
                             <CategoryTour 
                                 tours={props.tours.slice(0,6)}
                                 handleClickTourItem={props.handleClickTourItem}
+                                handleViewMoreTour={props.handleViewMoreTour}
                             />
 
                             <HotTour 

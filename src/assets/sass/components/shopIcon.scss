@@ -33,3 +33,26 @@
         font-size: 14px;
     }
 }
+
+@media screen and (max-width: 480px){
+    .shop-icon{
+        svg{
+            width: 20px;
+            height: 20px;
+        }
+
+        .shop-icon__bg{
+            width: 15px;
+            height: 15px;
+            top: 3px;
+            right: -7px;
+        }
+        .shop-icon__count{
+            width: 15px;
+            height: 15px;
+            top: 3px;
+            right: -7px;
+            font-size: 12px;
+        }
+    }
+}

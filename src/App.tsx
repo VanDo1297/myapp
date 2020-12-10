@@ -8,7 +8,8 @@ import Register from './containers/register';
 import Landing from './containers/landing';
 import MyBlog from './containers/myblog';
 import MyTour from './containers/tour/mytour';
-import TourDetail from './containers/tour/details'
+import TourDetail from './containers/tour/details';
+import Tours from './containers/tour/allTour';
 import { ToastContainer } from 'react-toastify';
 
 import {updateToken} from './context/auth/actions';
@@ -32,12 +33,13 @@ function App() {
             <ToastContainer />
             <Router>
                 <Header />
-                <div className="root">
+                <div style={{paddingTop:'50px'}} className="root">
                     <Switch>
                         <Route path="/" exact component={Landing}/>
                         <Route path="/login" exact component={Login}/>
                         <Route path='/register' exact component={Register} />
                         <UserRestrictedRoute path='/home' exact component={Landing} />
+                        <UserRestrictedRoute path='/tours' exact component={Tours} />
                         <UserRestrictedRoute path='/my-blog' exact component={MyBlog}/>
                         <UserRestrictedRoute path='/my-tour' exact component={MyTour}/>
                         <UserRestrictedRoute path='/tour/details' exact component={TourDetail} />

@@ -136,3 +136,9 @@
     .right-login{
     }
 }
+
+@media screen and (max-width: 480px){
+    .right-login .form-login >input{
+        width: 300px;
+    }
+}

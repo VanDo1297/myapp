@@ -88,7 +88,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid black;
     }
 
     .nav-mobile-control{
@@ -229,6 +228,12 @@
                 bottom: 0;
             }
         }
+    }
+}
+
+@media screen and (max-width: 480px){
+    .form >input{
+        width: 300px;
     }
 }
 

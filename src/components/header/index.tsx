@@ -82,7 +82,7 @@ function Header(props: IProps){
                         })
                     }
                 </ul>
-                {path !== '/login' && <div className="header-account ml-auto mr-2 d-flex flex-row align-items-center">
+                {props.location.pathname !== '/login' && props.location.pathname !== '/register' && <div className="header-account ml-auto mr-2 d-flex flex-row align-items-center">
                     <ShopIcon count={bookingCount} />
                     {currentUser.accountId ? (
                             <div tabIndex={-1} onBlur={()=>setActionToggle(false)} className='d-flex flex-row current-user align-items-center p-relative'> 
@@ -101,27 +101,31 @@ function Header(props: IProps){
                     }
                 </div>}
             </div>
-            <div  onBlur={toggleNav} tabIndex={-1} className='nav-mobile ml-auto p-relative'>
+            <div onBlur={()=>setMenuToggle(false)} tabIndex={-1} className='nav-mobile p-relative'>
                 <img onClick={()=>props.history.push('/')} style={{width:'50px'}} src={logo} alt=''/>
-                <div  className='navb-toggle' onClick={toggleNav}> <FaBars /></div>
-                {
-                    isMenuToggle && (
-                        <div  data-aos="fade-left" className='togglenav'>
-                            {
-                                navbars.map(navbar=>{
-                                    return  <a key={navbar.name} className="nav-link" href={navbar.path}>{navbar.name}</a>
-                                })
-                            }
+                <div className="d-flex flex-row">
+                    <ShopIcon count={bookingCount} />
+                    <div  className='navb-toggle' onClick={toggleNav}> <FaBars /></div>
+                    {
+                        isMenuToggle && (
+                            <div  data-aos="fade-left" className='togglenav'>
+                                
+                                {
+                                    navbars.map(navbar=>{
+                                        return  <a key={navbar.name} className="nav-link" href={navbar.path}>{navbar.name}</a>
+                                    })
+                                }
 
-                            <div className="nav-mobile-control">
-                                <button onClick={handleMyTour}>My Tour</button>
-                                <button  onClick={handleMyBlog} >My Blog</button>
-                                <button  onClick={handleHistory}>History</button>
-                                <button onClick={handleLogout}>Log out</button>
+                                <div className="nav-mobile-control">
+                                    <button onClick={handleMyTour}>My Tour</button>
+                                    <button  onClick={handleMyBlog} >My Blog</button>
+                                    <button  onClick={handleHistory}>History</button>
+                                    <button onClick={handleLogout}>Log out</button>
+                                </div>
                             </div>
-                        </div>
-                    )
-                }
+                        )
+                    }
+                </div>
             </div>
         </div>
     )

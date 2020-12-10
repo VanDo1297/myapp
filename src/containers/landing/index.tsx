@@ -32,12 +32,17 @@ function Landing(props: IProps){
         props.history.push(`/tour/details?id=${id}&type=public`)
     }
 
+    const handleViewMoreTour =()=>{
+        props.history.push(`/tours`)
+    }
+
     return (
         <>
             <Presentational 
                 tours={tours}
                 blogs={blogs}
                 handleClickTourItem={handleClickTourItem}
+                handleViewMoreTour={handleViewMoreTour}
             />
             <Loading isShowLoading={isLoading} />
         </>
