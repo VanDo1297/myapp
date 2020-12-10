@@ -70,7 +70,7 @@ function Footer(){
                 <p className="information-location">Newtown Apaterment, 18 Street, Thu Duc Province, Ho Chi Minh City.</p>
                 <p className="mb-0">Email:</p>
                 <p className="information-email"><a href="mailto:docs2gtvt@gmail.com">docs2gtvt@gmail.com</a></p>
-                <p className="mb-0">Social contact</p>
+                <p className="mb-0">Social contact: </p>
                 <div className="d-flex flex-row w-100 social-link">
                     <FacebookShareButton url={''}><FacebookIcon size={32} round={true} /></FacebookShareButton>
                     <TwitterShareButton url={''}><TwitterIcon size={32} round={true} /></TwitterShareButton>

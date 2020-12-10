@@ -20,7 +20,7 @@ const TourItem = React.memo((props: IProps)=>{
                 <p className="mb-0 tour-price pointer">
                     {tour.prince ? tour.prince + 'VND' : 'FREE'} 
                 </p>
-                <p className="mb-0 tour-name">
+                <p className="mb-0 tour-name line-clamp-2">
                     {tour.tourName}
                 </p>
             </div>

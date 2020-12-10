@@ -114,14 +114,10 @@ function Header(props: IProps){
                             }
 
                             <div className="nav-mobile-control">
-                                <div className="d-flex flex-row w-100">
-                                    <button onClick={handleMyTour}>My Tour</button>
-                                    <button  onClick={handleMyBlog} >My Blog</button>
-                                </div>
-                                <div className="d-flex flex-row w-100">
-                                    <button  onClick={handleHistory}>History</button>
-                                    <button onClick={handleLogout}>Log out</button>
-                                </div>
+                                <button onClick={handleMyTour}>My Tour</button>
+                                <button  onClick={handleMyBlog} >My Blog</button>
+                                <button  onClick={handleHistory}>History</button>
+                                <button onClick={handleLogout}>Log out</button>
                             </div>
                         </div>
                     )
